@@ -3,100 +3,353 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>微控制器与嵌入式系统课程设计 · 优秀作品展</title>
-  <meta name="description" content="中南大学 微控制器与嵌入式系统课程设计优秀作品展示，含手写数字识别、智能语音音箱、嵌入式游戏等作品。">
+  <title>中南大学 · 微控制器与嵌入式系统课程设计 · 优秀作品展</title>
+  <meta name="description" content="中南大学 微控制器与嵌入式系统课程设计 — 课程概览、优秀作品展示、资源下载">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- ======================== 样式 ======================== -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
 </head>
 <body>
 
-<!-- ======================== 顶部导航 ======================== -->
-<header class="site-header">
-  <div class="header-inner">
-    <h1>🛠️ 嵌入式系统 <span>· 优秀作品展</span></h1>
-    <div class="header-stats">
-      共 <strong id="totalCount">0</strong> 件作品
+<!-- ======================== 导航栏 ======================== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/中南大学校徽.png" alt="中南大学" class="csu-logo-img">
+      <span>中南大学自动化学院 · <em class="nav-course-name">微控制器与嵌入式系统课程设计</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#overview">课程概览</a>
+      <a href="#showcase">成果展示</a>
+      <a href="#resources">资源支持</a>
     </div>
-  </div>
-</header>
-
-<!-- ======================== Hero ======================== -->
-<section class="hero">
-  <h2>✨ 微控制器与嵌入式系统课程设计</h2>
-  <p>
-    这里汇聚了历届学弟学妹们的优秀课程设计作品，涵盖手写数字识别、智能语音音箱、
-    嵌入式游戏、电子琴、智能家居等多个方向。希望这些作品能为你带来启发 🚀
-  </p>
-</section>
-
-<!-- ======================== 筛选栏 ======================== -->
-<nav class="filter-bar">
-  <div class="filter-inner" id="filterContainer">
-    <!-- 由 JS 动态生成 -->
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
   </div>
 </nav>
 
-<!-- ======================== 作品列表 ======================== -->
-<main class="works-grid" id="worksGrid">
-  <!-- 由 JS 动态生成 -->
-</main>
+<!-- ======================== HERO ======================== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>微控制器与嵌入式系统<br><span>课程设计 · 优秀作品展</span></h1>
+    <p class="hero-subtitle" id="heroSubtitle">中南大学 · 自动化 2024 级</p>
+    <p class="hero-desc">这里汇聚了历届学子的优秀课程设计作品，涵盖智能控制、人机交互、物联网等多个方向。</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-num" id="statWorks">0</span>
+        <span class="stat-label">参展作品</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">6</span>
+        <span class="stat-label">题目方向</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">技术阵营</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">学期</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#showcase" class="btn btn-primary">浏览作品 ↓</a>
+      <a href="#overview" class="btn btn-outline-light">课程要求 ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== 课程概览 ======================== -->
+<section class="section" id="overview">
+  <div class="section-inner">
+
+    <h2 class="section-title">📋 课程概览与要求</h2>
+    <p class="section-desc">了解课程目标、平台选择与评分标准，明确学习方向</p>
+
+    <!-- 基本信息 -->
+    <div class="info-cards">
+      <div class="info-card">
+        <span class="info-icon">📖</span>
+        <h3>课程名称</h3>
+        <p id="courseName">微控制器与嵌入式系统课程设计</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">👥</span>
+        <h3>面向班级</h3>
+        <p id="courseClass">自动化 2024 级</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🧑‍🏫</span>
+        <h3>指导教师</h3>
+        <p id="courseTeachers">——</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">📅</span>
+        <h3>时间</h3>
+        <p id="courseTime">——</p>
+      </div>
+    </div>
+
+    <!-- 设计目的 -->
+    <div class="content-block">
+      <h3>🎯 设计目的与内容</h3>
+      <p id="courseGoal">——</p>
+    </div>
+
+    <!-- 两大阵营 -->
+    <div class="platforms">
+      <div class="platform-card mcu">
+        <h4>🔲 MCU 阵营（微控制器）</h4>
+        <ul id="mcuList"></ul>
+      </div>
+      <div class="platform-card mpu">
+        <h4>💻 MPU 阵营（应用处理器）</h4>
+        <ul id="mpuList"></ul>
+      </div>
+    </div>
+
+    <!-- 评分标准 -->
+    <div class="content-block">
+      <h3>📊 评分标准</h3>
+      <p class="block-sub">关注全过程，不只看最终结果</p>
+      <div class="grading-table-wrap">
+        <table class="grading-table" id="gradingTable">
+          <thead>
+            <tr><th>评分项目</th><th>权重</th><th>说明</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================== 成果展示 ======================== -->
+<section class="section section-alt" id="showcase">
+  <div class="section-inner">
+
+    <h2 class="section-title">🏆 学生成果展示</h2>
+    <p class="section-desc">历届优秀作品，按方向分类浏览。突出"功能完整性"、"技术深度"、"特色创新"</p>
+
+    <!-- 筛选栏 -->
+    <div class="filter-bar" id="filterContainer"></div>
+
+    <!-- 作品网格 -->
+    <div class="works-grid" id="worksGrid"></div>
+
+  </div>
+</section>
+
+<!-- ======================== 资源支持 ======================== -->
+<section class="section" id="resources">
+  <div class="section-inner">
+
+    <h2 class="section-title">📚 资源与支持</h2>
+    <p class="section-desc">任务书下载、常见问题解答、开发工具链配置</p>
+
+    <!-- 任务书下载 -->
+    <div class="content-block">
+      <h3>📄 任务书与文档下载</h3>
+      <div class="download-list" id="taskList"></div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="content-block">
+      <h3>❓ 常见问题与经验分享</h3>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+
+    <!-- 工具链 -->
+    <div class="content-block">
+      <h3>🔧 开发环境与工具链</h3>
+      <div class="tools-grid" id="toolsGrid"></div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ======================== 页脚 ======================== -->
 <footer class="site-footer">
-  <p>
-    中南大学 · 微控制器与嵌入式系统课程 &nbsp;|&nbsp;
-    如有问题或想分享作品，请联系任课老师
-  </p>
+  <div class="section-inner">
+    <p>
+      中南大学 · 微控制器与嵌入式系统课程 &nbsp;|&nbsp;
+      本网站由 Netlify 提供托管
+    </p>
+    <p class="footer-meta">
+      数据维护：编辑 <code>docs/js/config.js</code> 和 <code>docs/js/data.js</code> 更新内容
+    </p>
+  </div>
 </footer>
 
-<!-- ======================== JS ======================== -->
+<!-- ======================== JavaScript ======================== -->
+<script src="js/config.js"></script>
 <script src="js/data.js"></script>
 <script>
 (function() {
-  // ---------- DOM refs ----------
-  const grid = document.getElementById('worksGrid');
-  const filterContainer = document.getElementById('filterContainer');
-  const totalEl = document.getElementById('totalCount');
+  'use strict';
 
-  // ---------- 状态 ----------
+  // ==================== 导航 ====================
+  const navbar = document.getElementById('navbar');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  // 汉堡菜单
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // 点击导航链接关闭菜单
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // 滚动时导航栏加阴影
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ==================== 填充课程信息 ====================
+  const C = COURSE_CONFIG;
+
+  function $(id) { return document.getElementById(id); }
+
+  // 基本信息
+  $('courseName').textContent = C.course.name;
+  $('courseClass').textContent = C.course.students;
+  $('courseTeachers').textContent = C.course.teachers.join('、') + ' 等';
+  $('courseTime').textContent = C.course.semester;
+  $('courseGoal').textContent = C.objectives.goal;
+
+  // Hero
+  $('heroSubtitle').textContent = '中南大学 · ' + C.course.students;
+
+  // MCU 列表
+  const mcuList = $('mcuList');
+  C.objectives.platforms.mcu.items.forEach(item => {
+    mcuList.innerHTML += `<li><strong>${item.name}</strong> — ${item.desc}</li>`;
+  });
+
+  // MPU 列表
+  const mpuList = $('mpuList');
+  C.objectives.platforms.mpu.items.forEach(item => {
+    mpuList.innerHTML += `<li><strong>${item.name}</strong> — ${item.desc}</li>`;
+  });
+
+  // 评分表
+  const gradingBody = $('gradingTable').querySelector('tbody');
+  C.grading.forEach(g => {
+    gradingBody.innerHTML += `<tr><td>${g.item}</td><td class="weight">${g.weight}</td><td>${g.detail}</td></tr>`;
+  });
+
+  // ==================== 任务书 ====================
+  const taskList = $('taskList');
+  C.resources.tasks.forEach(t => {
+    if (t.url) {
+      taskList.innerHTML += `<a href="${t.url}" class="download-item" target="_blank">📄 ${t.name}</a>`;
+    } else {
+      taskList.innerHTML += `<span class="download-item disabled">📄 ${t.name} <small>（${t.note}）</small></span>`;
+    }
+  });
+
+  // ==================== FAQ ====================
+  const faqList = $('faqList');
+  C.resources.faq.forEach((item, i) => {
+    faqList.innerHTML += `
+      <div class="faq-item">
+        <button class="faq-question" data-index="${i}">
+          <span>${item.q}</span>
+          <span class="faq-icon">▼</span>
+        </button>
+        <div class="faq-answer">${item.a}</div>
+      </div>`;
+  });
+
+  // FAQ 点击展开
+  faqList.addEventListener('click', (e) => {
+    const btn = e.target.closest('.faq-question');
+    if (!btn) return;
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // 关闭所有
+    faqList.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+
+  // ==================== 工具链 ====================
+  const toolsGrid = $('toolsGrid');
+  C.resources.tools.forEach(t => {
+    if (t.url) {
+      toolsGrid.innerHTML += `
+        <a href="${t.url}" class="tool-card" target="_blank" rel="noopener">
+          <h4>${t.name}</h4>
+          <p>${t.desc}</p>
+        </a>`;
+    } else {
+      toolsGrid.innerHTML += `
+        <div class="tool-card disabled">
+          <h4>${t.name}</h4>
+          <p>${t.desc} <small>（校内提供）</small></p>
+        </div>`;
+    }
+  });
+
+  // ==================== 类别配置 ====================
+  const CATEGORIES = [
+    { id: 'all', label: '全部作品', icon: '📋' },
+    { id: 'handwriting', label: '✍️ 手写数字识别' },
+    { id: 'voice-speaker', label: '🔊 智能语音音箱' },
+    { id: 'game', label: '🎮 游戏合集' },
+    { id: 'piano', label: '🎹 电子琴' },
+    { id: 'smart-home', label: '🏠 智能家居' },
+    { id: 'smart-locker', label: '🔐 智能储物柜' },
+    { id: 'album', label: '🖼️ 电子相册' },
+  ];
+
+  const TAG_COLORS = {
+    'STM32': '#00ADD8', '神经网络': '#FF6F00', '手写识别': '#7C4DFF',
+    '语音识别': '#00C853', 'AI': '#E91E63', '物联网': '#00BCD4',
+    '传感器': '#FF9800', 'LCD': '#3F51B5', '游戏': '#FF5722',
+    '音频': '#9C27B0', '双平台': '#F44336', '双机协同': '#4CAF50',
+    '边缘推理': '#2196F3', '提示词工程': '#9C27B0', '自绘PCB': '#FF6F00',
+    '双人对战': '#E91E63', '训练模式': '#00BCD4', '网页端': '#4CAF50',
+    'Linux': '#FF5722', 'PWM': '#3F51B5', 'RK3588': '#F44336',
+    '智能锁': '#795548', '人机交互': '#607D8B', '图像显示': '#9E9E9E',
+    '智能硬件': '#009688', '华清远见': '#FF9800', '人机对战': '#673AB7',
+  };
+
+  const CATEGORY_THUMB = {
+    'handwriting': '✍️', 'voice-speaker': '🔊', 'game': '🎮',
+    'piano': '🎹', 'smart-home': '🏠', 'smart-locker': '🔐', 'album': '🖼️',
+  };
+
+  // ==================== 筛选与渲染 ====================
+  const filterContainer = $('filterContainer');
+  const worksGrid = $('worksGrid');
   let activeCategory = 'all';
   let searchQuery = '';
 
-  // ---------- 类别图标映射 ----------
-  const CATEGORY_ICONS = {
-    'handwriting': '✍️',
-    'voice-speaker': '🔊',
-    'game': '🎮',
-    'piano': '🎹',
-    'smart-home': '🏠',
-    'other': '📎',
-  };
-
-  // ---------- 渲染筛选按钮 ----------
   function renderFilters() {
     let html = '';
     CATEGORIES.forEach(cat => {
-      html += `<button class="filter-btn${cat.id === activeCategory ? ' active' : ''}" data-category="${cat.id}">
-        ${cat.icon} ${cat.label}
-      </button>`;
+      html += `<button class="filter-btn${cat.id === activeCategory ? ' active' : ''}" data-category="${cat.id}">${cat.label}</button>`;
     });
     html += `
       <div class="filter-search">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="搜索学生姓名或题目..." value="${searchQuery}">
+        <input type="text" id="searchInput" placeholder="搜索姓名或题目..." value="${searchQuery}">
       </div>`;
     filterContainer.innerHTML = html;
 
-    // 绑定筛选按钮事件
     filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         activeCategory = btn.dataset.category;
-        renderFilters();   // re-render to update active state
+        renderFilters();
         renderWorks();
       });
     });
 
-    // 绑定搜索事件
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value.trim();
@@ -104,28 +357,7 @@
     });
   }
 
-  // ---------- 缩略图 ----------
-  function getThumbClass(category) {
-    return 'thumb-' + category;
-  }
-
-  function getCategoryLabel(categoryId) {
-    const cat = CATEGORIES.find(c => c.id === categoryId);
-    return cat ? cat.label : '其他';
-  }
-
-  function getCategoryIcon(categoryId) {
-    return CATEGORY_ICONS[categoryId] || '📎';
-  }
-
-  // ---------- 标签颜色 ----------
-  function getTagColor(tag) {
-    return TAG_COLORS[tag] || '#607d8b';
-  }
-
-  // ---------- 渲染作品 ----------
   function renderWorks() {
-    // 筛选
     let filtered = WORKS_DATA;
 
     if (activeCategory !== 'all') {
@@ -134,21 +366,19 @@
 
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
-      filtered = filtered.filter(w => {
-        const nameMatch = w.students.some(s => s.toLowerCase().includes(q));
-        const titleMatch = w.title.toLowerCase().includes(q);
-        const classMatch = w.class.toLowerCase().includes(q);
-        const tagMatch = w.tags.some(t => t.toLowerCase().includes(q));
-        return nameMatch || titleMatch || classMatch || tagMatch;
-      });
+      filtered = filtered.filter(w =>
+        w.students.some(s => s.toLowerCase().includes(q)) ||
+        w.title.toLowerCase().includes(q) ||
+        w.class.toLowerCase().includes(q) ||
+        w.tags.some(t => t.toLowerCase().includes(q))
+      );
     }
 
-    // 更新总数
-    totalEl.textContent = filtered.length;
+    // 更新 Hero 统计
+    $('statWorks').textContent = filtered.length;
 
-    // 空状态
     if (filtered.length === 0) {
-      grid.innerHTML = `
+      worksGrid.innerHTML = `
         <div class="empty-state">
           <div class="empty-icon">🔍</div>
           <h3>没有找到匹配的作品</h3>
@@ -157,19 +387,16 @@
       return;
     }
 
-    // 渲染卡片
     let html = '';
     filtered.forEach(work => {
       const studentsStr = work.students.join(' + ');
       const highlightsHtml = work.highlights.length
         ? work.highlights.map(h => `<span class="highlight-badge">${h}</span>`).join('')
         : '';
-
       const tagsHtml = work.tags.map(t =>
-        `<span class="tag" style="background:${getTagColor(t)}">${t}</span>`
+        `<span class="tag" style="background:${TAG_COLORS[t] || '#607d8b'}">${t}</span>`
       ).join('');
 
-      // 操作按钮
       const hasCode = !!work.codeUrl;
       const hasVideo = !!work.videoUrl;
       const hasReport = !!work.reportUrl;
@@ -179,30 +406,26 @@
       if (hasCode || hasVideo || hasReport) {
         if (hasVideo) {
           const btnClass = isBilibili ? 'btn btn-bilibili' : 'btn btn-primary';
-          const icon = isBilibili ? '' : '▶ ';
-          actionsHtml += `<a href="${work.videoUrl}" class="${btnClass}" target="_blank" rel="noopener">${icon}观看视频</a>`;
+          actionsHtml += `<a href="${work.videoUrl}" class="${btnClass}" target="_blank" rel="noopener">观看视频</a>`;
         }
         if (hasCode) {
-          const isGithub = hasCode && work.codeUrl.includes('github.com');
-          actionsHtml += `<a href="${work.codeUrl}" class="btn btn-outline" target="_blank" rel="noopener">${isGithub ? '' : '📂'} 查看代码</a>`;
-        } else {
-          actionsHtml += `<span class="btn btn-outline btn-disabled">📂 代码待上传</span>`;
+          actionsHtml += `<a href="${work.codeUrl}" class="btn btn-outline" target="_blank" rel="noopener">📂 代码</a>`;
         }
         if (hasReport) {
           actionsHtml += `<a href="${work.reportUrl}" class="btn btn-outline" target="_blank" rel="noopener">📄 报告</a>`;
         }
       } else {
-        actionsHtml = `<span class="btn btn-outline btn-disabled" style="opacity:0.5;font-size:12px;">📁 本地文件 — 请联系老师获取</span>`;
+        actionsHtml = `<span class="btn btn-outline btn-disabled">📁 待上传</span>`;
       }
 
-      // 默认缩略图图标
-      const thumbIcon = getCategoryIcon(work.category);
+      const hasThumb = !!work.thumbnail;
+      const thumbIcon = CATEGORY_THUMB[work.category] || '📎';
 
       html += `
         <div class="work-card">
-          <div class="card-thumb ${getThumbClass(work.category)}">
-            <span class="thumb-icon">${thumbIcon}</span>
-            <span class="card-category-badge">${getCategoryLabel(work.category)}</span>
+          <div class="card-thumb ${hasThumb ? 'thumb-image' : 'thumb-' + work.category}"${hasThumb ? ` style="background-image:url('${work.thumbnail}')"` : ''}>
+            ${hasThumb ? '' : `<span class="thumb-icon">${thumbIcon}</span>`}
+            <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
             ${highlightsHtml ? `<div class="card-highlights">${highlightsHtml}</div>` : ''}
           </div>
           <div class="card-body">
@@ -216,10 +439,9 @@
         </div>`;
     });
 
-    grid.innerHTML = html;
+    worksGrid.innerHTML = html;
   }
 
-  // ---------- 初始化 ----------
   renderFilters();
   renderWorks();
 })();
