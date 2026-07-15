@@ -12,6 +12,20 @@
 </head>
 <body>
 
+<!-- ======================== 密码门禁 ======================== -->
+<div class="password-gate" id="passwordGate">
+  <div class="password-gate-box">
+    <div class="password-gate-icon">🔒</div>
+    <h2>中南大学 · 嵌入式系统课程设计</h2>
+    <p>请输入访问密码查看作品展示</p>
+    <div class="password-gate-input-wrap">
+      <input type="password" id="passwordInput" placeholder="请输入密码" autocomplete="off">
+      <button id="passwordBtn" class="btn btn-primary">验证</button>
+    </div>
+    <p class="password-gate-error" id="passwordError">密码错误，请重新输入</p>
+  </div>
+</div>
+
 <!-- ======================== 导航栏 ======================== -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
@@ -34,7 +48,7 @@
   <div class="hero-content">
     <h1>微控制器与嵌入式系统<br><span>课程设计 · 优秀作品展</span></h1>
     <p class="hero-subtitle" id="heroSubtitle">中南大学 · 自动化 2024 级</p>
-    <p class="hero-desc">这里汇聚了历届学子的优秀课程设计作品，涵盖智能控制、人机交互、物联网等多个方向。</p>
+    <p class="hero-desc">这里陈列的不仅是课程设计的作品，更是一届届学子将理论与工程实践相结合的思考与探索。从智能控制到人机交互，从物联网到边缘计算，每一件作品都完整呈现了需求分析、系统设计、硬件搭建与软件调试的全过程。我们希望为后来者提供一份可查阅、可借鉴的工程实践档案，让优秀的经验得以延续，让创造的种子持续生长。</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <span class="stat-num" id="statWorks">0</span>
@@ -173,6 +187,12 @@
 <!-- ======================== 页脚 ======================== -->
 <footer class="site-footer">
   <div class="section-inner">
+    <p class="footer-disclaimer">
+      本网站仅为课程教学成果展示平台，非中南大学官方站点
+    </p>
+    <p class="footer-privacy">
+      为保护学生隐私，作者姓名部分信息已做模糊处理
+    </p>
     <p>
       中南大学 · 微控制器与嵌入式系统课程 &nbsp;|&nbsp;
       本网站由 Netlify 提供托管
@@ -189,6 +209,36 @@
 <script>
 (function() {
   'use strict';
+
+  // ==================== 密码门禁 ====================
+  const ACCESS_PASSWORD = '206207208';  // ← 修改这里设置密码
+  const gate = document.getElementById('passwordGate');
+  const passInput = document.getElementById('passwordInput');
+  const passBtn = document.getElementById('passwordBtn');
+  const passError = document.getElementById('passwordError');
+
+  // 检查是否已验证过
+  if (sessionStorage.getItem('csu_embedded_access') === 'true') {
+    gate.classList.add('hidden');
+  }
+
+  passBtn.addEventListener('click', checkPassword);
+  passInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') checkPassword();
+  });
+  passInput.addEventListener('input', () => passError.classList.remove('show'));
+
+  function checkPassword() {
+    if (passInput.value === ACCESS_PASSWORD) {
+      sessionStorage.setItem('csu_embedded_access', 'true');
+      gate.classList.add('hidden');
+      passInput.value = '';
+    } else {
+      passError.classList.add('show');
+      passInput.value = '';
+      passInput.focus();
+    }
+  }
 
   // ==================== 导航 ====================
   const navbar = document.getElementById('navbar');

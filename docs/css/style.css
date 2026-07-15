@@ -34,6 +34,82 @@ a { color: var(--primary-light); text-decoration: none; transition: color var(--
 a:hover { color: var(--accent); }
 img { max-width: 100%; }
 
+/* ======================== 密码门禁 ======================== */
+.password-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #0f2444 0%, #1a3a6b 50%, #2a5298 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 0.5s ease;
+}
+.password-gate.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.password-gate-box {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.password-gate-icon { font-size: 48px; margin-bottom: 16px; }
+.password-gate-box h2 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.password-gate-box p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 24px;
+}
+
+.password-gate-input-wrap {
+  display: flex;
+  gap: 8px;
+}
+.password-gate-input-wrap input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: inherit;
+}
+.password-gate-input-wrap input::placeholder { color: rgba(255,255,255,0.35); }
+.password-gate-input-wrap input:focus { border-color: rgba(255,255,255,0.5); }
+
+.password-gate-error {
+  color: #ff6b6b !important;
+  font-size: 13px !important;
+  margin-top: 12px;
+  margin-bottom: 0 !important;
+  display: none;
+}
+.password-gate-error.show { display: block; }
+
+.password-gate-box .btn { padding: 12px 24px; white-space: nowrap; }
+
+@media (max-width: 480px) {
+  .password-gate-box { padding: 32px 24px; }
+  .password-gate-box h2 { font-size: 17px; }
+}
+
 /* ======================== 导航栏 ======================== */
 .navbar {
   position: fixed;
@@ -156,11 +232,12 @@ img { max-width: 100%; }
 }
 
 .hero-desc {
-  font-size: 16px;
-  color: rgba(255,255,255,0.6);
-  max-width: 600px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  max-width: 800px;
   margin: 0 auto 32px;
-  line-height: 1.8;
+  line-height: 2;
+  text-align: justify;
 }
 
 .hero-stats {
@@ -657,8 +734,20 @@ img { max-width: 100%; }
   background: var(--primary-dark);
   color: rgba(255,255,255,0.5);
   text-align: center;
-  padding: 32px 24px;
+  padding: 28px 24px;
   font-size: 13px;
+}
+.footer-disclaimer {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-privacy {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 12px;
 }
 .site-footer p { margin-bottom: 4px; }
 .footer-meta { font-size: 12px; opacity: 0.6; }
