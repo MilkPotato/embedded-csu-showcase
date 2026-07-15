@@ -750,6 +750,12 @@ img { max-width: 100%; }
   margin-bottom: 12px;
 }
 .site-footer p { margin-bottom: 4px; }
+.footer-stats {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 4px;
+}
+.footer-stats span { color: rgba(255,255,255,0.5); font-weight: 600; }
 .footer-meta { font-size: 12px; opacity: 0.6; }
 .footer-meta code { background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 4px; font-size: 11px; }
 
