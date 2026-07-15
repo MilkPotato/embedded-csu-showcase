@@ -71,7 +71,7 @@ const WORKS_DATA = [
     description: '基于STM32的多功能电子琴，支持多种音色切换、曲目播放与录音回放功能。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 多功能电子琴 自动化2408 陈*一.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1xhNB6PEYK/', // 多功能电子琴 陈*一 自动化2408.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -131,7 +131,7 @@ const WORKS_DATA = [
     description: '基于STM32和神经网络的手写数字识别系统，支持实时手写输入与高精度识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 手写数字系统-相*帆 自动化2403.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV16FNB6sEhv/', // 手写数字系统-相*帆 自动化2403.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -191,7 +191,7 @@ const WORKS_DATA = [
     description: '基于STM32的手写数字识别，利用训练好的模型实现高精度手写数字识别。',
     highlights: [],
     codeUrl: '', // 学生作品/自动化2408 邝* - v8.0.zip
-    videoUrl: '', // 手写数字识别 2408自动化 邝*.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1ccNB6REF6/', // 手写数字识别 邝* 自动化2408.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -251,7 +251,7 @@ const WORKS_DATA = [
     description: '基于STM32的多功能电子琴，支持多音阶弹奏、内置曲目播放与LED律动效果。',
     highlights: [],
     codeUrl: '', // 学生作品/自动化2406 袁*凡 电子琴 Keil_ElectronicPiano.zip
-    videoUrl: '', // 多功能电子琴 自动化2406 袁*凡.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1bKNz6gEu7/', // 多功能电子琴 袁*凡 自动化2406.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -451,17 +451,79 @@ const WORKS_DATA = [
     reportUrl: '学生作品/自动化T2401 吴*莹-手写数字识别1.pdf',
     thumbnail: '',
   },
+  },
+  {
+    id: 'dengweixian-games',
+    title: '5个游戏合集',
+    students: ['邓*贤'],
+    class: '自动化240*班',
+    year: 2024,
+    category: 'game',
+    tags: ['STM32', '游戏', 'LCD'],
+    description: '嵌入式平台5款经典游戏合集，涵盖多种游戏类型。',
+    highlights: [],
+    codeUrl: '',
+    videoUrl: '',
+    reportUrl: '',
+    thumbnail: '',
+  },
+  {
+    id: 'zhudazhe-handwriting',
+    title: '手写数字识别',
+    students: ['朱*达', '贺*哲', '孙*程'],
+    class: '自动化240*班',
+    year: 2024,
+    category: 'handwriting',
+    tags: ['STM32', '手写识别'],
+    description: '基于STM32的手写数字识别系统，实现手写数字的实时采集与神经网络识别。',
+    highlights: [],
+    codeUrl: '',
+    videoUrl: '',
+    reportUrl: '',
+    thumbnail: '',
+  }  },
+  {
+    id: 'dengweixian-games',
+    title: '5个游戏合集',
+    students: ['邓*贤'],
+    class: '自动化240*班',
+    year: 2024,
+    category: 'game',
+    tags: ['STM32', '游戏', 'LCD'],
+    description: '嵌入式平台5款经典游戏合集，涵盖多种游戏类型。',
+    highlights: [],
+    codeUrl: '',
+    videoUrl: '',
+    reportUrl: '',
+    thumbnail: '',
+  },
+  {
+    id: 'zhudazhe-handwriting',
+    title: '手写数字识别',
+    students: ['朱*达', '贺*哲', '孙*程'],
+    class: '自动化240*班',
+    year: 2024,
+    category: 'handwriting',
+    tags: ['STM32', '手写识别'],
+    description: '基于STM32的手写数字识别系统，实现手写数字的实时采集与神经网络识别。',
+    highlights: [],
+    codeUrl: '',
+    videoUrl: '',
+    reportUrl: '',
+    thumbnail: '',
+  }
 ];
 
 // ======================== 类别配置 ========================
 const CATEGORIES = [
   { id: 'all', label: '全部作品', icon: '📋' },
-  { id: 'handwriting', label: '手写数字识别', icon: '✍️' },
-  { id: 'voice-speaker', label: '智能语音音箱', icon: '🔊' },
-  { id: 'game', label: '游戏合集', icon: '🎮' },
-  { id: 'piano', label: '电子琴', icon: '🎹' },
-  { id: 'smart-home', label: '智能家居', icon: '🏠' },
-  { id: 'other', label: '其他', icon: '📎' },
+  { id: 'handwriting', label: '✍️ 手写数字识别' },
+  { id: 'voice-speaker', label: '🔊 智能语音音箱' },
+  { id: 'game', label: '🎮 游戏合集' },
+  { id: 'piano', label: '🎹 电子琴' },
+  { id: 'smart-home', label: '🏠 智能家居' },
+  { id: 'smart-locker', label: '🔐 智能储物柜' },
+  { id: 'album', label: '🖼️ 电子相册' },
 ];
 
 // ======================== 标签配色 ========================
@@ -488,9 +550,12 @@ const TAG_COLORS = {
   'PWM': '#3F51B5',
   'RK3588': '#F44336',
   '智能锁': '#795548',
+  '人脸识别': '#E91E63',
   '人机交互': '#607D8B',
   '图像显示': '#9E9E9E',
   '智能硬件': '#009688',
   '华清远见': '#FF9800',
   '人机对战': '#673AB7',
+  'ESP32': '#0047AB',
+  '三平台协同': '#4CAF50',
 };
