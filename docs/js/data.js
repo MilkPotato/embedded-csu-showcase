@@ -451,7 +451,6 @@ const WORKS_DATA = [
     reportUrl: '学生作品/自动化T2401 吴*莹-手写数字识别1.pdf',
     thumbnail: '',
   },
-  },
   {
     id: 'dengweixian-games',
     title: '5个游戏合集',
@@ -481,49 +480,19 @@ const WORKS_DATA = [
     videoUrl: '',
     reportUrl: '',
     thumbnail: '',
-  }  },
-  {
-    id: 'dengweixian-games',
-    title: '5个游戏合集',
-    students: ['邓*贤'],
-    class: '自动化240*班',
-    year: 2024,
-    category: 'game',
-    tags: ['STM32', '游戏', 'LCD'],
-    description: '嵌入式平台5款经典游戏合集，涵盖多种游戏类型。',
-    highlights: [],
-    codeUrl: '',
-    videoUrl: '',
-    reportUrl: '',
-    thumbnail: '',
   },
-  {
-    id: 'zhudazhe-handwriting',
-    title: '手写数字识别',
-    students: ['朱*达', '贺*哲', '孙*程'],
-    class: '自动化240*班',
-    year: 2024,
-    category: 'handwriting',
-    tags: ['STM32', '手写识别'],
-    description: '基于STM32的手写数字识别系统，实现手写数字的实时采集与神经网络识别。',
-    highlights: [],
-    codeUrl: '',
-    videoUrl: '',
-    reportUrl: '',
-    thumbnail: '',
-  }
-];
+]
 
 // ======================== 类别配置 ========================
 const CATEGORIES = [
   { id: 'all', label: '全部作品', icon: '📋' },
-  { id: 'handwriting', label: '✍️ 手写数字识别' },
-  { id: 'voice-speaker', label: '🔊 智能语音音箱' },
-  { id: 'game', label: '🎮 游戏合集' },
-  { id: 'piano', label: '🎹 电子琴' },
-  { id: 'smart-home', label: '🏠 智能家居' },
-  { id: 'smart-locker', label: '🔐 智能储物柜' },
-  { id: 'album', label: '🖼️ 电子相册' },
+  { id: 'handwriting', label: '手写数字识别' },
+  { id: 'voice-speaker', label: '智能语音音箱' },
+  { id: 'game', label: '游戏合集' },
+  { id: 'piano', label: '电子琴' },
+  { id: 'smart-home', label: '智能家居' },
+  { id: 'smart-locker', label: '智能储物柜' },
+  { id: 'album', label: '电子相册' },
 ];
 
 // ======================== 标签配色 ========================
