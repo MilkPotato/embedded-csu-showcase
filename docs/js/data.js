@@ -37,8 +37,8 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '手写识别', '物联网'],
-    description: '融合手写数字识别技术与智能门锁控制，通过触摸屏输入密码实现安全开锁。',
+    tags: ['STM32', '手写识别', '人脸识别', '物联网'],
+    description: '基于人脸识别与触屏输入的双重验证智能门锁系统。优先使用摄像头进行人脸识别开锁，人脸识别失败时可通过触摸屏输入密码作为备用方式，兼顾便捷性与安全性。',
     highlights: [],
     codeUrl: '',
     videoUrl: '', // 手写数字识别+智能门锁 自动化2402 黄*哲.mp4
@@ -273,7 +273,7 @@ const WORKS_DATA = [
   {
     id: 'zhengzihao-games',
     title: '五子棋 + 贪吃蛇 双游戏',
-    students: ['郑*皓'],
+    students: ['郑*皓', '张*博'],
     class: '自动化240*班',
     year: 2024,
     category: 'game',
