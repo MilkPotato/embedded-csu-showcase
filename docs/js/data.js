@@ -56,7 +56,7 @@ const WORKS_DATA = [
     description: '基于嵌入式平台的智能语音音箱，支持语音命令识别、音乐播放与智能对话。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1quMi6HEuS/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 智能语音音箱 自动化2402 吴*玮.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1quMi6HEuS/', // 智能语音音箱 自动化2402 吴*玮.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -86,7 +86,7 @@ const WORKS_DATA = [
     description: '在嵌入式平台上实现5款经典小游戏合集，含贪吃蛇、俄罗斯方块等，支持按键切换。',
     highlights: [],
     codeUrl: '', // 学生作品/自动化2408 朱*盛 多游戏合集- myfinal_game_pro.zip
-    videoUrl: 'https://www.bilibili.com/video/BV1EKMi6WEKB/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 5个游戏合集 朱*盛 自动化2408.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EKMi6WEKB/', // 5个游戏合集 朱*盛 自动化2408.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -146,7 +146,7 @@ const WORKS_DATA = [
     description: '基于嵌入式平台的智能语音音箱，实现语音唤醒、命令识别与语音交互功能。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EPc/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 智能语音音箱 李*轩 自动化2402.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EPc/', // 智能语音音箱 李*轩 自动化2402.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -221,7 +221,7 @@ const WORKS_DATA = [
     description: '基于STM32与神经网络的手写数字识别系统，支持模型训练与实时识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEPH/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 手写数字识别 陈*菲 自动化T2401.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEPH/', // 手写数字识别 陈*菲 自动化T2401.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -236,7 +236,7 @@ const WORKS_DATA = [
     description: '嵌入式贪吃蛇游戏，支持多种难度模式，包含计分与排名功能。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1fpMG6sEwj/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 贪吃蛇 杨*康 自动化2407.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1fpMG6sEwj/', // 贪吃蛇 杨*康 自动化2407.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -296,7 +296,7 @@ const WORKS_DATA = [
     description: '基于STM32的手写数字识别系统，实现手写数字的采集、预处理与识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EsW/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 手写数字识别 胡*东 自动化2406.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EsW/', // 手写数字识别 胡*东 自动化2406.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -311,7 +311,7 @@ const WORKS_DATA = [
     description: '嵌入式平台5款经典游戏合集，同时包含网页端演示版本，技术栈丰富。',
     highlights: ['含网页端演示'],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEmR/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 5个游戏合集 吴*杰 自动化2405.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEmR/', // 5个游戏合集 吴*杰 自动化2405.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -356,7 +356,7 @@ const WORKS_DATA = [
     description: '基于STM32的手写数字识别系统，支持手写数字实时识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1qTMi6XERg/?vd_source=851bcabe2785dea719d0bc99c51e5038', // 手写数字识别 金*帆 自动化T2401.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1qTMi6XERg/', // 手写数字识别 金*帆 自动化T2401.mp4
     reportUrl: '',
     thumbnail: '',
   },
