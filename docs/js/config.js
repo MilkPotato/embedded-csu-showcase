@@ -8,7 +8,7 @@ const COURSE_CONFIG = {
   course: {
     name: '微控制器与嵌入式系统课程设计',
     nameShort: '嵌入式系统课程设计',
-    students: '自动化 2024 级',
+    students: '自动化、测控技术与仪器等 2024 级',
     teachers: ['罗旗舞', '王海波', '张航', '刘剑锋', '陈致蓬', '康叶', '周敏', '李杰'],
     semester: '2025-2026 学年 第 2 学期',
     duration: '第 1-16 周',
