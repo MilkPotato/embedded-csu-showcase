@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微控制器与嵌入式系统课程设计 · 优秀作品展</title>
+  <meta name="description" content="湖北工业大学 微控制器与嵌入式系统课程设计优秀作品展示，含手写数字识别、智能语音音箱、嵌入式游戏等作品。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
+</head>
+<body>
+
+<!-- ======================== 顶部导航 ======================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <h1>🛠️ 嵌入式系统 <span>· 优秀作品展</span></h1>
+    <div class="header-stats">
+      共 <strong id="totalCount">0</strong> 件作品
+    </div>
+  </div>
+</header>
+
+<!-- ======================== Hero ======================== -->
+<section class="hero">
+  <h2>✨ 微控制器与嵌入式系统课程设计</h2>
+  <p>
+    这里汇聚了历届学弟学妹们的优秀课程设计作品，涵盖手写数字识别、智能语音音箱、
+    嵌入式游戏、电子琴、智能家居等多个方向。希望这些作品能为你带来启发 🚀
+  </p>
+</section>
+
+<!-- ======================== 筛选栏 ======================== -->
+<nav class="filter-bar">
+  <div class="filter-inner" id="filterContainer">
+    <!-- 由 JS 动态生成 -->
+  </div>
+</nav>
+
+<!-- ======================== 作品列表 ======================== -->
+<main class="works-grid" id="worksGrid">
+  <!-- 由 JS 动态生成 -->
+</main>
+
+<!-- ======================== 页脚 ======================== -->
+<footer class="site-footer">
+  <p>
+    湖北工业大学 · 微控制器与嵌入式系统课程 &nbsp;|&nbsp;
+    如有问题或想分享作品，请联系任课老师
+  </p>
+</footer>
+
+<!-- ======================== JS ======================== -->
+<script src="js/data.js"></script>
+<script>
+(function() {
+  // ---------- DOM refs ----------
+  const grid = document.getElementById('worksGrid');
+  const filterContainer = document.getElementById('filterContainer');
+  const totalEl = document.getElementById('totalCount');
+
+  // ---------- 状态 ----------
+  let activeCategory = 'all';
+  let searchQuery = '';
+
+  // ---------- 类别图标映射 ----------
+  const CATEGORY_ICONS = {
+    'handwriting': '✍️',
+    'voice-speaker': '🔊',
+    'game': '🎮',
+    'piano': '🎹',
+    'smart-home': '🏠',
+    'other': '📎',
+  };
+
+  // ---------- 渲染筛选按钮 ----------
+  function renderFilters() {
+    let html = '';
+    CATEGORIES.forEach(cat => {
+      html += `<button class="filter-btn${cat.id === activeCategory ? ' active' : ''}" data-category="${cat.id}">
+        ${cat.icon} ${cat.label}
+      </button>`;
+    });
+    html += `
+      <div class="filter-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="搜索学生姓名或题目..." value="${searchQuery}">
+      </div>`;
+    filterContainer.innerHTML = html;
+
+    // 绑定筛选按钮事件
+    filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.dataset.category;
+        renderFilters();   // re-render to update active state
+        renderWorks();
+      });
+    });
+
+    // 绑定搜索事件
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      renderWorks();
+    });
+  }
+
+  // ---------- 缩略图 ----------
+  function getThumbClass(category) {
+    return 'thumb-' + category;
+  }
+
+  function getCategoryLabel(categoryId) {
+    const cat = CATEGORIES.find(c => c.id === categoryId);
+    return cat ? cat.label : '其他';
+  }
+
+  function getCategoryIcon(categoryId) {
+    return CATEGORY_ICONS[categoryId] || '📎';
+  }
+
+  // ---------- 标签颜色 ----------
+  function getTagColor(tag) {
+    return TAG_COLORS[tag] || '#607d8b';
+  }
+
+  // ---------- 渲染作品 ----------
+  function renderWorks() {
+    // 筛选
+    let filtered = WORKS_DATA;
+
+    if (activeCategory !== 'all') {
+      filtered = filtered.filter(w => w.category === activeCategory);
+    }
+
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(w => {
+        const nameMatch = w.students.some(s => s.toLowerCase().includes(q));
+        const titleMatch = w.title.toLowerCase().includes(q);
+        const classMatch = w.class.toLowerCase().includes(q);
+        const tagMatch = w.tags.some(t => t.toLowerCase().includes(q));
+        return nameMatch || titleMatch || classMatch || tagMatch;
+      });
+    }
+
+    // 更新总数
+    totalEl.textContent = filtered.length;
+
+    // 空状态
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">🔍</div>
+          <h3>没有找到匹配的作品</h3>
+          <p>试试其他关键词或筛选条件</p>
+        </div>`;
+      return;
+    }
+
+    // 渲染卡片
+    let html = '';
+    filtered.forEach(work => {
+      const studentsStr = work.students.join(' + ');
+      const highlightsHtml = work.highlights.length
+        ? work.highlights.map(h => `<span class="highlight-badge">${h}</span>`).join('')
+        : '';
+
+      const tagsHtml = work.tags.map(t =>
+        `<span class="tag" style="background:${getTagColor(t)}">${t}</span>`
+      ).join('');
+
+      // 操作按钮
+      const hasCode = !!work.codeUrl;
+      const hasVideo = !!work.videoUrl;
+      const hasReport = !!work.reportUrl;
+      const isBilibili = hasVideo && (work.videoUrl.includes('bilibili.com') || work.videoUrl.includes('b23.tv'));
+
+      let actionsHtml = '';
+      if (hasCode || hasVideo || hasReport) {
+        if (hasVideo) {
+          const btnClass = isBilibili ? 'btn btn-bilibili' : 'btn btn-primary';
+          const icon = isBilibili ? '' : '▶ ';
+          actionsHtml += `<a href="${work.videoUrl}" class="${btnClass}" target="_blank" rel="noopener">${icon}观看视频</a>`;
+        }
+        if (hasCode) {
+          const isGithub = hasCode && work.codeUrl.includes('github.com');
+          actionsHtml += `<a href="${work.codeUrl}" class="btn btn-outline" target="_blank" rel="noopener">${isGithub ? '' : '📂'} 查看代码</a>`;
+        } else {
+          actionsHtml += `<span class="btn btn-outline btn-disabled">📂 代码待上传</span>`;
+        }
+        if (hasReport) {
+          actionsHtml += `<a href="${work.reportUrl}" class="btn btn-outline" target="_blank" rel="noopener">📄 报告</a>`;
+        }
+      } else {
+        actionsHtml = `<span class="btn btn-outline btn-disabled" style="opacity:0.5;font-size:12px;">📁 本地文件 — 请联系老师获取</span>`;
+      }
+
+      // 默认缩略图图标
+      const thumbIcon = getCategoryIcon(work.category);
+
+      html += `
+        <div class="work-card">
+          <div class="card-thumb ${getThumbClass(work.category)}">
+            <span class="thumb-icon">${thumbIcon}</span>
+            <span class="card-category-badge">${getCategoryLabel(work.category)}</span>
+            ${highlightsHtml ? `<div class="card-highlights">${highlightsHtml}</div>` : ''}
+          </div>
+          <div class="card-body">
+            <div class="card-title">${work.title}</div>
+            <div class="card-students">👤 ${studentsStr}</div>
+            <div class="card-class">📚 ${work.class} · ${work.year}级</div>
+            <div class="card-desc">${work.description}</div>
+            <div class="card-tags">${tagsHtml}</div>
+            <div class="card-actions">${actionsHtml}</div>
+          </div>
+        </div>`;
+    });
+
+    grid.innerHTML = html;
+  }
+
+  // ---------- 初始化 ----------
+  renderFilters();
+  renderWorks();
+})();
+</script>
+
+</body>
+</html>
