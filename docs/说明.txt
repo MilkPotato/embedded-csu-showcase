@@ -1,14 +1,12 @@
-现在每个作品支持两种封面模式：
+日常修改（不消耗积分）：
+  git add .
+  git commit -m "修改内容"
+  git push origin master                         → 推master，Netlify不理
 
-方式  效果
-thumbnail: ''（空）    默认渐变背景 + 图标（和现在一样）
-thumbnail: 'assets/xxx.jpg' 显示你上传的图片作为封面
-使用示例——在 data.js 中给作品加上图片：
-
-
-{
-  id: 'xxx',
-  ...
-  thumbnail: 'assets/李*文_五子棋.jpg',  // 放 assets/ 目录下
-}
-图片建议尺寸 640×320，宽高比 2:1。
+正式发布（消耗15积分）：
+  git push origin master                         → 先确保master已推送
+  打开 github.com 网站
+  点 Pull Requests → New Pull Request
+  base: production ← compare: master
+  点 Create Pull Request → Merge
+  → Netlify 自动部署 ✅
