@@ -59,7 +59,7 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1>微控制器与嵌入式系统<br><span>课程设计 · 优秀作品展</span></h1>
-    <p class="hero-subtitle" id="heroSubtitle">中南大学 · 自动化 2024 级</p>
+    <p class="hero-subtitle" id="heroSubtitle">中南大学 · 自动化、测控技术与仪器等</p>
     <p class="hero-desc">这里陈列的不仅是课程设计的作品，更是一届届学子将理论与工程实践相结合的思考与探索。从智能控制到人机交互，从物联网到边缘计算，每一件作品都完整呈现了需求分析、系统设计、硬件搭建与软件调试的全过程。我们希望为后来者提供一份可查阅、可借鉴的工程实践档案，让优秀的经验得以延续，让创造的种子持续生长。</p>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -293,8 +293,8 @@
   $('courseTime').textContent = C.course.semester;
   $('courseGoal').textContent = C.objectives.goal;
 
-  // Hero
-  $('heroSubtitle').textContent = '中南大学 · ' + C.course.students;
+  // Hero（使用独立的 subtitle 字段，不含年级）
+  $('heroSubtitle').textContent = C.course.subtitle || '中南大学 · ' + C.course.students;
 
   // MCU 列表
   const mcuList = $('mcuList');
