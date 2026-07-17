@@ -532,38 +532,3 @@ const TAG_COLORS = {
   'STM32F103': '#0097A7',
   'STM32F407': '#1565C0',
 };
-
-// ======================== B站封面图映射 ========================
-// 格式: BV号 → 封面图URL，由 B站 API 生成
-const BILI_COVERS = {
-  'BV1XLNB65Em7': 'https://i0.hdslb.com/bfs/archive/2c549953fe0626d49b197b727fb3d18740fceb17.jpg',
-  'BV1TKK368Ev7': 'https://i1.hdslb.com/bfs/archive/d1728cced5e3a2d23ed9ec1356c67902d56dfb8d.jpg',
-  'BV1quMi6HEuS': 'https://i1.hdslb.com/bfs/archive/eaed04ce9a5fa0d3b790daadf9d83fe5611dbc28.jpg',
-  'BV1xhNB6PEYK': 'https://i0.hdslb.com/bfs/archive/4da3563da4985776b9b226771c708e2f54ec89f3.jpg',
-  'BV1EKMi6WEKB': 'https://i2.hdslb.com/bfs/archive/6a572512e19b3352cc6758cfe29f8e495f0d646c.jpg',
-  'BV1KuK36tEwJ': 'https://i2.hdslb.com/bfs/archive/8d6ebf9830b491a0e54f023aa4e9192ab999f843.jpg',
-  'BV1tNK36cEBG': 'https://i0.hdslb.com/bfs/archive/3e9438f168eca24bd6bfb6fe79ba6caf7e586994.jpg',
-  'BV16FNB6sEhv': 'https://i0.hdslb.com/bfs/archive/acac2de5d3021cf89c2505f4eedc3cbbca04b28d.jpg',
-  'BV1EWMG69EPc': 'https://i1.hdslb.com/bfs/archive/59617457ffa1e1746f07d13880607315f3852d1c.jpg',
-  'BV1tsKg6tEGL': 'https://i2.hdslb.com/bfs/archive/8e645fa813f1b8f562507ee174e14b13c71b89df.jpg',
-  'BV1UpKg6fEMy': 'https://i2.hdslb.com/bfs/archive/a7fc5220279e7c8241adc811e31a2bc46e0379ad.jpg',
-  'BV1ccNB6REF6': 'https://i1.hdslb.com/bfs/archive/5a8658a4ecc122f025326214ff7e68a8e1da450f.jpg',
-  'BV1BCKg6LE9D': 'https://i1.hdslb.com/bfs/archive/5e0c4fcac31ea88af64984d5a836efae8e3e73ce.jpg',
-  'BV1EpMG6sEPH': 'https://i0.hdslb.com/bfs/archive/71d75ca97dafad0a4c51af3ffc59460d04b8127b.jpg',
-  'BV1fpMG6sEwj': 'https://i1.hdslb.com/bfs/archive/5bc3d18493b4cd5aca6d852249e031b5bdfeebf3.jpg',
-  'BV1bKNz6gEu7': 'https://i0.hdslb.com/bfs/archive/09970aeb673018eee653c758ffb89330a9e9e198.jpg',
-  'BV1ECKg6LEGU': 'https://i0.hdslb.com/bfs/archive/c0923cec309213135858aeb02ce2e5476c382ab4.jpg',
-  'BV1kRNq6ZEXk': 'https://i1.hdslb.com/bfs/archive/da2419fbd259533d748f865baf612d5a11122c5d.jpg',
-  'BV1EWMG69EsW': 'https://i2.hdslb.com/bfs/archive/993821d18807cefa14ceab064335c1fd61f8bcb2.jpg',
-  'BV1EpMG6sEmR': 'https://i0.hdslb.com/bfs/archive/63152fa9ae7f72b409f12de644d72f5afae2dfaf.jpg',
-  'BV1FrKg6mEi6': 'https://i0.hdslb.com/bfs/archive/2b950a6a998e535a05633e7b5e0a555c1fd23bc9.jpg',
-  'BV1ByKg6yEEY': 'https://i2.hdslb.com/bfs/archive/27a3feacbd73b316cda1e7d938b05f60ac577790.jpg',
-  'BV1qTMi6XERg': 'https://i0.hdslb.com/bfs/archive/426a808c2d10540e3962d34271d7b12e995e6f35.jpg',
-  'BV1wqKg6nE7b': 'https://i2.hdslb.com/bfs/archive/832c0873738456167f7562ef4b4e6065d5fba4ca.jpg',
-  'BV1HqKg6JEPm': 'https://i0.hdslb.com/bfs/archive/3b4e0bdba0726529488ec2d49055dfa2ef8d6d1c.jpg',
-  'BV1roNq64Ee1': 'https://i1.hdslb.com/bfs/archive/9aefa80f0f5c3957da07178f49484c37c1aac9e1.jpg',
-  'BV1HvKg6DEUa': 'https://i1.hdslb.com/bfs/archive/274f08b71d046c64db7fcd9df7786f29bb6987c2.jpg',
-  'BV1XjNB6CEU2': 'https://i2.hdslb.com/bfs/archive/310bca57dd13701223d979243f804b0a85ba6c88.jpg',
-  'BV1ErKg62Eds': 'https://i2.hdslb.com/bfs/archive/e6183cd76d48e42a50d29885a4ea0397ed94277f.jpg',
-  'BV1HvKg6DE2d': 'https://i0.hdslb.com/bfs/archive/d369c96a36c7e1657f550d02fe97b671f44b9cf1.jpg',
-};
