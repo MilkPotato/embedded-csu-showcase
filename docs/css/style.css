@@ -524,9 +524,17 @@ img { max-width: 100%; }
 }
 /* 可点击的封面（B站跳转） */
 .card-thumb-link {
-  display: flex;
   text-decoration: none;
   cursor: pointer;
+}
+/* 封面图（本地加载） */
+.thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 .card-thumb-link::after {
   content: '';

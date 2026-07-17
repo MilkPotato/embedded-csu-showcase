@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
   <!-- 百度统计 -->
   <script>
   var _hmt = _hmt || [];
@@ -392,6 +393,8 @@
     'Linux': '#FF5722', 'PWM': '#3F51B5', 'RK3588': '#F44336',
     '智能锁': '#795548', '人机交互': '#607D8B', '图像显示': '#9E9E9E',
     '智能硬件': '#009688', '华清远见': '#FF9800', '人机对战': '#673AB7',
+    'C51': '#8B4513', 'ARM-A53': '#FF6F00',
+    'STM32F103': '#0097A7', 'STM32F407': '#1565C0',
   };
 
   const CATEGORY_THUMB = {
@@ -478,11 +481,12 @@
       const isBilibili = hasVideo && (work.videoUrl.includes('bilibili.com') || work.videoUrl.includes('b23.tv'));
 
       // 提取 BV 号 → 查找封面图
-      let coverUrl = '';
+      let coverUrl = '', bvid = '';
       if (isBilibili) {
         const bvMatch = work.videoUrl.match(/BV1[A-Za-z0-9]{9,10}/);
         if (bvMatch && typeof BILI_COVERS !== 'undefined' && BILI_COVERS[bvMatch[0]]) {
           coverUrl = BILI_COVERS[bvMatch[0]];
+          bvid = bvMatch[0];
         }
       }
 
@@ -502,8 +506,11 @@
       const thumbIcon = CATEGORY_THUMB[work.category] || '📎';
 
       // 封面区域：有 B站封面 → 可点击链接 + 播放按钮；无 → 保持原样
+      const localFallback = bvid ? `assets/covers/${bvid}.jpg` : '';
       const thumbContent = coverUrl
-        ? `<a href="${work.videoUrl}" class="card-thumb card-thumb-link thumb-image" target="_blank" rel="noopener" style="background-image:url('${coverUrl}')">
+        ? `<a href="${work.videoUrl}" class="card-thumb card-thumb-link" target="_blank" rel="noopener">
+            <img src="${coverUrl}" alt="${work.title}" class="thumb-img" loading="lazy"
+              onerror="this.src='${localFallback}'; this.onerror=null">
             <div class="play-overlay"><span class="play-icon">▶</span></div>
             <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
             ${highlightsHtml ? `<div class="card-highlights">${highlightsHtml}</div>` : ''}
@@ -520,7 +527,7 @@
           <div class="card-body">
             <div class="card-title">${work.title}</div>
             <div class="card-students">👤 ${studentsStr}</div>
-            <div class="card-class">📚 ${work.class} · ${work.year}级</div>
+            <div class="card-class">📚 ${work.class} · ${work.year}级 · 🗓️ 2026年</div>
             <div class="card-desc">${work.description}</div>
             <div class="card-tags">${tagsHtml}</div>
             <div class="card-actions">${actionsHtml}</div>
