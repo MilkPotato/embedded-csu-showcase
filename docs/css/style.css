@@ -527,15 +527,27 @@ img { max-width: 100%; }
   text-decoration: none;
   cursor: pointer;
 }
-/* 封面图（本地加载） */
+/* 封面图（本地加载）：渐变背景上淡入 */
 .thumb-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.thumb-img.loaded {
+  opacity: 1;
+}
+
+/* 渐变背景上的图标占位（图片加载前显示） */
+.thumb-icon-bg {
+  position: relative;
   z-index: 0;
 }
+
 .card-thumb-link::after {
   content: '';
   position: absolute;
