@@ -18,6 +18,14 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
+  <!-- 预连接到 B站 CDN，减少 DNS/SSL 时间 -->
+  <link rel="preconnect" href="https://i0.hdslb.com">
+  <link rel="preconnect" href="https://i1.hdslb.com">
+  <link rel="preconnect" href="https://i2.hdslb.com">
+  <link rel="dns-prefetch" href="https://i0.hdslb.com">
+  <link rel="dns-prefetch" href="https://i1.hdslb.com">
+  <link rel="dns-prefetch" href="https://i2.hdslb.com">
+
   <!-- ======================== 样式 ======================== -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -469,32 +477,46 @@
       const hasReport = !!work.reportUrl;
       const isBilibili = hasVideo && (work.videoUrl.includes('bilibili.com') || work.videoUrl.includes('b23.tv'));
 
+      // 提取 BV 号 → 查找封面图
+      let coverUrl = '';
+      if (isBilibili) {
+        const bvMatch = work.videoUrl.match(/BV1[A-Za-z0-9]{9,10}/);
+        if (bvMatch && typeof BILI_COVERS !== 'undefined' && BILI_COVERS[bvMatch[0]]) {
+          coverUrl = BILI_COVERS[bvMatch[0]];
+        }
+      }
+
+      // 按钮：只保留 代码 + 报告，去掉"观看视频"
       let actionsHtml = '';
-      if (hasCode || hasVideo || hasReport) {
-        if (hasVideo) {
-          const btnClass = isBilibili ? 'btn btn-bilibili' : 'btn btn-primary';
-          actionsHtml += `<a href="${work.videoUrl}" class="${btnClass}" target="_blank" rel="noopener">观看视频</a>`;
-        }
-        if (hasCode) {
-          actionsHtml += `<a href="${work.codeUrl}" class="btn btn-outline" target="_blank" rel="noopener">📂 代码</a>`;
-        }
-        if (hasReport) {
-          actionsHtml += `<a href="${work.reportUrl}" class="btn btn-outline" target="_blank" rel="noopener">📄 报告</a>`;
-        }
-      } else {
+      if (hasCode) {
+        actionsHtml += `<a href="${work.codeUrl}" class="btn btn-outline" target="_blank" rel="noopener">📂 代码</a>`;
+      }
+      if (hasReport) {
+        actionsHtml += `<a href="${work.reportUrl}" class="btn btn-outline" target="_blank" rel="noopener">📄 报告</a>`;
+      }
+      if (!hasCode && !hasReport) {
         actionsHtml = `<span class="btn btn-outline btn-disabled">📁 待上传</span>`;
       }
 
       const hasThumb = !!work.thumbnail;
       const thumbIcon = CATEGORY_THUMB[work.category] || '📎';
 
-      html += `
-        <div class="work-card">
-          <div class="card-thumb ${hasThumb ? 'thumb-image' : 'thumb-' + work.category}"${hasThumb ? ` style="background-image:url('${work.thumbnail}')"` : ''}>
+      // 封面区域：有 B站封面 → 可点击链接 + 播放按钮；无 → 保持原样
+      const thumbContent = coverUrl
+        ? `<a href="${work.videoUrl}" class="card-thumb card-thumb-link thumb-image" target="_blank" rel="noopener" style="background-image:url('${coverUrl}')">
+            <div class="play-overlay"><span class="play-icon">▶</span></div>
+            <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
+            ${highlightsHtml ? `<div class="card-highlights">${highlightsHtml}</div>` : ''}
+          </a>`
+        : `<div class="card-thumb ${hasThumb ? 'thumb-image' : 'thumb-' + work.category}"${hasThumb ? ` style="background-image:url('${work.thumbnail}')"` : ''}>
             ${hasThumb ? '' : `<span class="thumb-icon">${thumbIcon}</span>`}
             <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
             ${highlightsHtml ? `<div class="card-highlights">${highlightsHtml}</div>` : ''}
-          </div>
+          </div>`;
+
+      html += `
+        <div class="work-card">
+          ${thumbContent}
           <div class="card-body">
             <div class="card-title">${work.title}</div>
             <div class="card-students">👤 ${studentsStr}</div>
