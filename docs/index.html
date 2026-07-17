@@ -294,7 +294,7 @@
 
   // 基本信息
   $('courseName').textContent = C.course.name;
-  $('courseClass').textContent = C.course.students;
+  $('courseClass').innerHTML = C.course.students.replace(' · 大二年级', '<br>大二年级');
   $('courseTeachers').textContent = C.course.teachers.join('、') + ' 等';
   $('courseTime').textContent = C.course.semester;
   $('courseGoal').textContent = C.objectives.goal;
