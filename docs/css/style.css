@@ -853,12 +853,45 @@ img { max-width: 100%; }
   .tools-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* ======================== 年份标签 ======================== */
+.year-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.year-btn {
+  padding: 8px 20px;
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+  user-select: none;
+}
+
+.year-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(26,58,107,0.06);
+}
+
+.year-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(26,58,107,0.3);
+}
+
 @media (max-width: 480px) {
-  .nav-inner { padding: 0 12px; }
-  .hero h1 { font-size: 24px; }
-  .hero-subtitle { font-size: 14px; }
-  .hero-desc { font-size: 14px; }
-  .info-cards { grid-template-columns: 1fr; }
-  .tools-grid { grid-template-columns: 1fr; }
-  .download-list { flex-direction: column; }
+  .year-btn {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
 }

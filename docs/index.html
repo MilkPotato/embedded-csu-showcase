@@ -162,6 +162,9 @@
     <!-- 筛选栏 -->
     <div class="filter-bar" id="filterContainer"></div>
 
+    <!-- 年份筛选 -->
+    <div class="year-tabs" id="yearTabs"></div>
+
     <!-- 作品网格 -->
     <div class="works-grid" id="worksGrid"></div>
 
@@ -398,7 +401,10 @@
   const filterContainer = $('filterContainer');
   const worksGrid = $('worksGrid');
   let activeCategory = 'all';
+  let activeYear = 'all';
   let searchQuery = '';
+  // 提取所有年份（去重、降序）
+  const YEARS = [...new Set(WORKS_DATA.map(w => w.year))].sort((a, b) => b - a);
 
   function renderFilters() {
     let html = '';
@@ -442,6 +448,11 @@
         w.class.toLowerCase().includes(q) ||
         w.tags.some(t => t.toLowerCase().includes(q))
       );
+    }
+
+    // 按年份筛选
+    if (activeYear !== 'all') {
+      filtered = filtered.filter(w => w.year === activeYear);
     }
 
     // 更新 Hero 统计
@@ -528,7 +539,26 @@
     worksGrid.innerHTML = html;
   }
 
+  // ==================== 年份切换 ====================
+  function renderYearTabs() {
+    const container = document.getElementById('yearTabs');
+    let html = `<button class="year-btn${activeYear === 'all' ? ' active' : ''}" data-year="all">📅 全部年级</button>`;
+    YEARS.forEach(y => {
+      html += `<button class="year-btn${activeYear === y ? ' active' : ''}" data-year="${y}">${y} 级</button>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.year-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeYear = btn.dataset.year === 'all' ? 'all' : parseInt(btn.dataset.year);
+        renderYearTabs();
+        renderWorks();
+      });
+    });
+  }
+
   renderFilters();
+  renderYearTabs();
   renderWorks();
 })();
 </script>
