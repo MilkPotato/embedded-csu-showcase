@@ -42,7 +42,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
-      <img src="assets/中南大学校徽.png" alt="中南大学" class="csu-logo-img">
+      <img src="assets/中南大学校徽.jpg" alt="中南大学" class="csu-logo-img">
       <span>中南大学自动化学院 · <em class="nav-course-name">微控制器与嵌入式系统课程设计</em></span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -166,7 +166,7 @@
     <div class="year-tabs" id="yearTabs"></div>
 
     <!-- 作品网格 -->
-    <div class="works-grid" id="worksGrid"></div>
+    <div class="works-grid" id="worksGrid"><div class="empty-state"><div class="empty-icon">⏳</div><h3>正在加载作品列表...</h3></div></div>
 
   </div>
 </section>
@@ -221,8 +221,8 @@
   </div>
 </footer>
 
-<!-- ======================== 统计 ======================== -->
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- ======================== 统计（仅非 file:// 协议时加载） ======================== -->
+<script>if (location.protocol !== 'file:') { var bsz = document.createElement('script'); bsz.async = true; bsz.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'; document.head.appendChild(bsz); }</script>
 
 <!-- ======================== JavaScript ======================== -->
 <script src="js/config.js"></script>
@@ -517,7 +517,7 @@
       // 封面区域：有封面 → 可点击链接 + 播放按钮；无 → 保持原样
       const thumbContent = coverUrl
         ? `<a href="${work.videoUrl}" class="card-thumb card-thumb-link thumb-${work.category}" target="_blank" rel="noopener">
-            <img src="${coverUrl}" alt="${work.title}" class="thumb-img" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <img data-src="${coverUrl}" alt="${work.title}" class="thumb-img">
             <span class="thumb-icon thumb-icon-bg">${thumbIcon}</span>
             <div class="play-overlay"><span class="play-icon">▶</span></div>
             <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
@@ -544,6 +544,20 @@
     });
 
     worksGrid.innerHTML = html;
+    // 图片逐张加载：上一张加载完才加载下一张
+    setTimeout(function() {
+      var imgs = worksGrid.querySelectorAll('img[data-src]');
+      var i = 0;
+      function loadNext() {
+        if (i >= imgs.length) return;
+        var img = imgs[i];
+        img.onload = function() { i++; setTimeout(loadNext, 50); };
+        img.onerror = function() { i++; setTimeout(loadNext, 50); };
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+      }
+      loadNext();
+    }, 50);
   }
 
   // ==================== 年份切换 ====================

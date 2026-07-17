@@ -505,7 +505,6 @@ img { max-width: 100%; }
   transition: all var(--transition);
   display: flex;
   flex-direction: column;
-  content-visibility: auto;
 }
 .work-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 
@@ -527,7 +526,7 @@ img { max-width: 100%; }
   text-decoration: none;
   cursor: pointer;
 }
-/* 封面图（本地加载）：渐变背景上淡入 */
+/* 封面图（本地加载） */
 .thumb-img {
   position: absolute;
   inset: 0;
@@ -535,11 +534,6 @@ img { max-width: 100%; }
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.thumb-img.loaded {
-  opacity: 1;
 }
 
 /* 渐变背景上的图标占位（图片加载前显示） */
@@ -825,13 +819,7 @@ img { max-width: 100%; }
 .footer-meta code { background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 4px; font-size: 11px; }
 
 /* ======================== 动画 ======================== */
-.work-card { animation: fadeUp 0.4s ease both; }
-.work-card:nth-child(1) { animation-delay: 0.02s; }
-.work-card:nth-child(2) { animation-delay: 0.04s; }
-.work-card:nth-child(3) { animation-delay: 0.06s; }
-.work-card:nth-child(4) { animation-delay: 0.08s; }
-.work-card:nth-child(5) { animation-delay: 0.10s; }
-.work-card:nth-child(6) { animation-delay: 0.12s; }
+.work-card { animation: fadeUp 0.3s ease both; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
