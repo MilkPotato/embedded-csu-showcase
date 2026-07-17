@@ -80,8 +80,8 @@
       </div>
     </div>
     <div class="hero-actions">
-      <a href="#showcase" class="btn btn-primary">浏览作品 ↓</a>
-      <a href="#overview" class="btn btn-outline-light">课程要求 ↓</a>
+      <a href="#showcase" class="btn btn-primary" onclick="document.getElementById('showcase').scrollIntoView({behavior:'smooth'});return false;">浏览作品 ↓</a>
+      <a href="#overview" class="btn btn-outline-light" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'});return false;">课程要求 ↓</a>
     </div>
   </div>
 </section>
@@ -112,7 +112,7 @@
       </div>
       <div class="info-card">
         <span class="info-icon">📅</span>
-        <h3>时间</h3>
+        <h3>时间 &amp; 地点</h3>
         <p id="courseTime">——</p>
       </div>
     </div>
@@ -238,9 +238,15 @@
   const passBtn = document.getElementById('passwordBtn');
   const passError = document.getElementById('passwordError');
 
+  function dismissGate() {
+    gate.classList.add('hidden');
+    // 彻底移除遮罩层，避免干扰页面交互（锚点跳转等）
+    setTimeout(() => { gate.style.display = 'none'; }, 500);
+  }
+
   // 检查是否已验证过
   if (sessionStorage.getItem('csu_embedded_access') === 'true') {
-    gate.classList.add('hidden');
+    dismissGate();
   }
 
   passBtn.addEventListener('click', checkPassword);
@@ -252,7 +258,7 @@
   function checkPassword() {
     if (passInput.value === ACCESS_PASSWORD) {
       sessionStorage.setItem('csu_embedded_access', 'true');
-      gate.classList.add('hidden');
+      dismissGate();
       passInput.value = '';
     } else {
       passError.classList.add('show');
@@ -511,7 +517,7 @@
       // 封面区域：有封面 → 可点击链接 + 播放按钮；无 → 保持原样
       const thumbContent = coverUrl
         ? `<a href="${work.videoUrl}" class="card-thumb card-thumb-link thumb-${work.category}" target="_blank" rel="noopener">
-            <img src="${coverUrl}" alt="${work.title}" class="thumb-img" loading="lazy" onload="this.classList.add("loaded")">
+            <img src="${coverUrl}" alt="${work.title}" class="thumb-img" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
             <span class="thumb-icon thumb-icon-bg">${thumbIcon}</span>
             <div class="play-overlay"><span class="play-icon">▶</span></div>
             <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
@@ -560,7 +566,8 @@
 
   renderFilters();
   renderYearTabs();
-  renderWorks();
+  // 推迟作品渲染，让页面先可交互（按钮、导航等）
+  setTimeout(renderWorks, 100);
 })();
 </script>
 

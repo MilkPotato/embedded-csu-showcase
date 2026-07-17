@@ -1,0 +1,3 @@
+# 封面图强缓存（文件名含 BV 号，更新时必定换名，不会用错旧缓存）
+/assets/covers/*
+  Cache-Control: public, max-age=604800

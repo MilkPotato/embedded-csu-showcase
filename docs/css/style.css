@@ -711,7 +711,7 @@ img { max-width: 100%; }
 
 /* ======================== FAQ ======================== */
 .faq-list {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .faq-item {
@@ -765,9 +765,16 @@ img { max-width: 100%; }
 
 /* ======================== 工具链 ======================== */
 .tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.tools-grid .tool-card {
+  flex: 1;
+  min-width: 155px;
+  max-width: 240px;
 }
 
 .tool-card {
