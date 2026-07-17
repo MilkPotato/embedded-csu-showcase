@@ -9,7 +9,7 @@
  *   4. 推送到 GitHub Pages 后自动生效
  *
  * 字段说明：
- *   videoUrl  → B站视频链接（点击"观看视频"直接跳转）
+ *   videoUrl  → B站视频链接（点击封面图直接跳转）
  *   codeUrl   → GitHub 仓库链接（可选）
  *   reportUrl → PDF 报告链接（可选）
  */
@@ -22,11 +22,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'smart-home',
-    tags: ['STM32', '传感器', '物联网'],
-    description: '基于STM32的智能家居环境监测系统，可实时采集温湿度、光照等数据并上传云端。',
+    tags: ['C51', '传感器', '物联网'],
+    description: '基于C51（8051单片机）的智能家居环境监测系统，可实时采集温湿度、光照等数据并上传云端。',
     highlights: ['优秀作品'],
-    codeUrl: '学生作品/自动化2407 郭*瑞 智能家居代码.zip',  // Note: the zip name says 郭*瑞 but 刘*欣 also has one
-    videoUrl: '', // 智能家居监测 刘*欣 自动化2407 .mp4
+    codeUrl: '',  // 代码在本地 学生作品/ 目录（不上传 GitHub），后续传独立仓库后再填链接
+    videoUrl: 'https://www.bilibili.com/video/BV1XLNB65Em7/', // 智能家居监测 刘*欣 自动化240* .mp4
     reportUrl: '',
     thumbnail: '',  // will use placeholder
   },
@@ -41,7 +41,7 @@ const WORKS_DATA = [
     description: '基于人脸识别与触屏输入的双重验证智能门锁系统。优先使用摄像头进行人脸识别开锁，人脸识别失败时可通过触摸屏输入密码作为备用方式，兼顾便捷性与安全性。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 手写数字识别+智能门锁 自动化2402 黄*哲.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1TKK368Ev7/', // 手写数字识别+智能门锁 自动化240* 黄*哲.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -52,11 +52,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'voice-speaker',
-    tags: ['语音识别', 'STM32', '智能硬件'],
-    description: '基于嵌入式平台的智能语音音箱，支持语音命令识别、音乐播放与智能对话。',
+    tags: ['语音识别', 'ARM-A53', 'Linux', '智能硬件'],
+    description: '基于ARM Cortex-A53嵌入式平台的智能语音音箱，支持语音命令识别、音乐播放与智能对话。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1quMi6HEuS/', // 智能语音音箱 自动化2402 吴*玮.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1quMi6HEuS/', // 智能语音音箱 自动化240* 吴*玮.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -67,11 +67,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'piano',
-    tags: ['STM32', '音频', '人机交互'],
-    description: '基于STM32的多功能电子琴，支持多种音色切换、曲目播放与录音回放功能。',
+    tags: ['C51', '音频', '人机交互'],
+    description: '基于C51（8051单片机）的多功能电子琴，支持多种音色切换、曲目播放与录音回放功能。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1xhNB6PEYK/', // 多功能电子琴 陈*一 自动化2408.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1xhNB6PEYK/', // 多功能电子琴 陈*一 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -85,8 +85,8 @@ const WORKS_DATA = [
     tags: ['STM32', '游戏', 'LCD'],
     description: '在嵌入式平台上实现5款经典小游戏合集，含贪吃蛇、俄罗斯方块等，支持按键切换。',
     highlights: [],
-    codeUrl: '', // 学生作品/自动化2408 朱*盛 多游戏合集- myfinal_game_pro.zip
-    videoUrl: 'https://www.bilibili.com/video/BV1EKMi6WEKB/', // 5个游戏合集 朱*盛 自动化2408.mp4
+    codeUrl: '', // 学生作品/自动化240* 朱*盛 多游戏合集- myfinal_game_pro.zip
+    videoUrl: 'https://www.bilibili.com/video/BV1EKMi6WEKB/',
     reportUrl: '',
     thumbnail: '',
   },
@@ -98,10 +98,10 @@ const WORKS_DATA = [
     year: 2024,
     category: 'voice-speaker',
     tags: ['RK3588', 'STM32', 'ESP32', 'Linux', '三平台协同'],
-    description: '基于RK3588+STM32+ESP32三平台协同的智能语音音箱。RK3588负责语音识别与边缘推理，STM32负责传感器与执行控制，ESP32负责无线通信与物联网接入，实现高效分布式智能语音交互。',
-    highlights: ['三平台协同'],
+    description: '基于RK3588+STM32+ESP32三平台协同的智能语音音箱，实现云边端部署。RK3588负责语音识别与边缘推理，STM32负责传感器与执行控制，ESP32通过MQTT负责无线通信与物联网接入，功能覆盖多道题目要求。',
+    highlights: ['王炸', '三平台协同', '云边端部署'],
     codeUrl: '',
-    videoUrl: '', // 王*杭+王* 自动化2404 智能语音音箱 RK3588+STM32.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1KuK36tEwJ/', // 王*杭+王* 自动化240* 智能语音音箱 RK3588+STM32.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -112,11 +112,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'smart-locker',
-    tags: ['STM32', '智能锁', '物联网'],
-    description: '基于嵌入式系统的智能储物柜，支持指纹/密码开锁、远程控制与日志记录。',
+    tags: ['C51', '智能锁', '物联网'],
+    description: '基于C51（8051单片机）的智能储物柜，支持指纹/密码开锁、远程控制与日志记录。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 智能储物柜 马*铭 自动化2407.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1tNK36cEBG/', // 智能储物柜 马*铭 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -127,11 +127,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '神经网络', '手写识别'],
-    description: '基于STM32和神经网络的手写数字识别系统，支持实时手写输入与高精度识别。',
+    tags: ['STM32F103', '神经网络', '手写识别'],
+    description: '基于STM32F103和神经网络的手写数字识别系统，支持实时手写输入与高精度识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV16FNB6sEhv/', // 手写数字系统-相*帆 自动化2403.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV16FNB6sEhv/', // 手写数字系统-相*帆 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -142,11 +142,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'voice-speaker',
-    tags: ['语音识别', 'STM32', '智能硬件'],
-    description: '基于嵌入式平台的智能语音音箱，实现语音唤醒、命令识别与语音交互功能。',
+    tags: ['语音识别', 'ARM-A53', 'Linux', '智能硬件'],
+    description: '基于ARM Cortex-A53嵌入式平台的智能语音音箱，实现语音唤醒、命令识别与语音交互功能。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EPc/', // 智能语音音箱 李*轩 自动化2402.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EPc/', // 智能语音音箱 李*轩 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -157,11 +157,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'game',
-    tags: ['STM32', '游戏', 'LCD'],
-    description: '经典贪吃蛇游戏的嵌入式实现，支持难度调节、分数记录与排行榜功能。',
+    tags: ['STM32F103', '游戏', 'LCD'],
+    description: '基于STM32F103的经典贪吃蛇游戏，支持难度调节、分数记录与排行榜功能。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 贪吃蛇 自动化2403 张*涵.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1tsKg6tEGL/', // 贪吃蛇 自动化240* 张*涵.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -172,11 +172,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'game',
-    tags: ['STM32', 'AI', 'LCD', '人机对战'],
-    description: '基于STM32的五子棋对战系统，支持人机对战和双人对战两种模式。',
+    tags: ['STM32F103', 'AI', 'LCD', '人机对战'],
+    description: '基于双STM32F103的五子棋对战系统，支持人机对战和双人对战两种模式。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 五子棋对战 陈*娇 自动化2405 .mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1UpKg6fEMy/', // 五子棋对战 陈*娇 自动化240* .mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -187,26 +187,26 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '手写识别', 'AI'],
-    description: '基于STM32的手写数字识别，利用训练好的模型实现高精度手写数字识别。',
+    tags: ['STM32F103', '手写识别', 'AI'],
+    description: '基于STM32F103的手写数字识别，利用训练好的模型实现高精度手写数字识别。',
     highlights: [],
-    codeUrl: '', // 学生作品/自动化2408 邝* - v8.0.zip
-    videoUrl: 'https://www.bilibili.com/video/BV1ccNB6REF6/', // 手写数字识别 邝* 自动化2408.mp4
+    codeUrl: '', // 学生作品/自动化240* 邝* - v8.0.zip
+    videoUrl: 'https://www.bilibili.com/video/BV1ccNB6REF6/', // 手写数字识别 邝* 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
   {
     id: 'sunjiamu-handwriting',
-    title: '手写数字识别系统',
+    title: '手写数字识别 — 中文识别多种复杂模型',
     students: ['孙*睦'],
     class: '自动化240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '手写识别', 'AI'],
-    description: '基于STM32的手写数字识别系统，实现手写数字的实时采集、预处理与神经网络识别。',
-    highlights: [],
+    tags: ['STM32F103', '手写识别', 'AI'],
+    description: '基于STM32F103 + PC协同的手写数字识别系统，实现手写数字的实时采集、预处理与神经网络识别。',
+    highlights: ['中文识别多种复杂模型'],
     codeUrl: '',
-    videoUrl: '', // 自动化2406孙*睦课设手写数字识别1.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1BCKg6LE9D/', // 孙*睦 手写数字识别 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -217,11 +217,11 @@ const WORKS_DATA = [
     class: '自动化*240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '手写识别', '神经网络'],
-    description: '基于STM32与神经网络的手写数字识别系统，支持模型训练与实时识别。',
+    tags: ['STM32F103', '手写识别', '神经网络'],
+    description: '基于STM32F103与神经网络的手写数字识别系统，支持模型训练与实时识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEPH/', // 手写数字识别 陈*菲 自动化T2401.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEPH/', // 手写数字识别 陈*菲 自动化*240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -232,11 +232,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'game',
-    tags: ['STM32', '游戏', 'LCD'],
-    description: '嵌入式贪吃蛇游戏，支持多种难度模式，包含计分与排名功能。',
+    tags: ['STM32F103', '游戏', 'LCD'],
+    description: '基于STM32F103的贪吃蛇游戏，支持多种难度模式，包含计分与排名功能。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1fpMG6sEwj/', // 贪吃蛇 杨*康 自动化2407.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1fpMG6sEwj/', // 贪吃蛇 杨*康 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -247,11 +247,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'piano',
-    tags: ['STM32', '音频', 'PWM'],
-    description: '基于STM32的多功能电子琴，支持多音阶弹奏、内置曲目播放与LED律动效果。',
-    highlights: [],
-    codeUrl: '', // 学生作品/自动化2406 袁*凡 电子琴 Keil_ElectronicPiano.zip
-    videoUrl: 'https://www.bilibili.com/video/BV1bKNz6gEu7/', // 多功能电子琴 袁*凡 自动化2406.mp4
+    tags: ['C51', '音频', 'PWM', '神经网络'],
+    description: '基于C51（8051单片机）的多功能电子琴，支持多音阶弹奏、内置曲目播放与LED律动效果。特色：在51单片机上部署神经网络，实现曲谱识别与智能伴奏。',
+    highlights: ['51部署神经网络识曲子'],
+    codeUrl: '', // 学生作品/自动化240* 袁*凡 电子琴 Keil_ElectronicPiano.zip
+    videoUrl: 'https://www.bilibili.com/video/BV1bKNz6gEu7/', // 多功能电子琴 袁*凡 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -266,7 +266,7 @@ const WORKS_DATA = [
     description: '基于STM32的电子相册系统，支持BMP图片解码、自动轮播与按键翻页。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 电子相册 韩*翔 自动化2403.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1ECKg6LEGU/', // 电子相册 韩*翔 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -277,26 +277,26 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'game',
-    tags: ['STM32', '游戏', 'LCD'],
-    description: '在嵌入式平台上实现五子棋和贪吃蛇两款经典游戏，支持双人对战模式。',
+    tags: ['STM32F103', '游戏', 'LCD'],
+    description: '基于双STM32F103实现五子棋和贪吃蛇两款经典游戏，支持双人对战模式。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 五子棋+贪吃蛇 对战1/2 自动化2401郑*皓.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1kRNq6ZEXk/', // 五子棋+贪吃蛇 对战1/2 自动化240*郑*皓.mp4
     reportUrl: '',
     thumbnail: '',
   },
   {
     id: 'huerdong-handwriting',
-    title: '手写数字识别',
+    title: '手写数字识别 + 视觉识别 + 模型自动化测试集成',
     students: ['胡*东'],
     class: '自动化240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '手写识别'],
-    description: '基于STM32的手写数字识别系统，实现手写数字的采集、预处理与识别。',
+    tags: ['STM32F103', '手写识别'],
+    description: '基于STM32F103的手写数字识别系统，集成视觉识别与模型自动化测试功能，实现手写数字的采集、预处理、识别及自动评测。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EsW/', // 手写数字识别 胡*东 自动化2406.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EWMG69EsW/', // 手写数字识别 胡*东 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -307,11 +307,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'game',
-    tags: ['STM32', '游戏', 'LCD', '网页端'],
-    description: '嵌入式平台5款经典游戏合集，同时包含网页端演示版本，技术栈丰富。',
-    highlights: ['含网页端演示'],
+    tags: ['STM32F103', '游戏', 'LCD', '网页端'],
+    description: '基于STM32F103的5款经典游戏合集，集成视觉识别与手机同步功能，技术栈丰富。',
+    highlights: ['含网页端演示', '视觉+手机同步'],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEmR/', // 5个游戏合集 吴*杰 自动化2405.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1EpMG6sEmR/', // 5个游戏合集 吴*杰 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -322,11 +322,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '神经网络', '训练模式', '游戏交互'],
-    description: '功能全面的手写数字识别系统，包含训练模式、游戏模式（加法速记/限时速记）、九九乘法展示、手写区域校准及上位机模型识别。',
+    tags: ['STM32F407', '神经网络', '训练模式', '游戏交互'],
+    description: '功能全面的手写数字识别系统，基于STM32F407，包含训练模式、游戏模式（加法速记/限时速记）、九九乘法展示、手写区域校准及上位机模型识别。',
     highlights: ['功能最丰富'],
     codeUrl: '',
-    videoUrl: '', // 手写数字识别 周*承 自动化2408/ 下有7个视频
+    videoUrl: 'https://www.bilibili.com/video/BV1FrKg6mEi6/', // 手写数字识别 周*承 自动化240*/ 下有7个视频
     reportUrl: '',
     thumbnail: '',
   },
@@ -337,11 +337,11 @@ const WORKS_DATA = [
     class: '自动化*240*班',
     year: 2024,
     category: 'voice-speaker',
-    tags: ['STM32', '双机协同', '边缘推理', '提示词工程'],
-    description: '基于双机协同架构的智能语音音箱，实现边缘推理与提示词工程，双设备协同工作提升识别精度。',
+    tags: ['ARM-A53', 'STM32', '双机协同', '边缘推理', '提示词工程'],
+    description: '基于ARM-A53 + STM32双机协同架构的智能语音音箱，实现边缘推理与提示词工程，双设备协同工作提升识别精度。',
     highlights: ['双机协同', '边缘推理'],
     codeUrl: '',
-    videoUrl: '', // 智能语音音箱双机协同 林*萱 自动化T2401.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1ByKg6yEEY/', // 智能语音音箱双机协同 林*萱 自动化*240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -356,7 +356,7 @@ const WORKS_DATA = [
     description: '基于STM32的手写数字识别系统，支持手写数字实时识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1qTMi6XERg/', // 手写数字识别 金*帆 自动化T2401.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1qTMi6XERg/', // 手写数字识别 金*帆 自动化*240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -370,23 +370,23 @@ const WORKS_DATA = [
     tags: ['Linux', '华清远见', '语音识别'],
     description: '基于华清远见开发板的智能语音音箱，具有语音识别与交互功能。',
     highlights: [],
-    codeUrl: '', // 学生作品/自动化2402谢*宇 华清远见Linux智能家居.zip
-    videoUrl: '', // 智能语音音箱 华清远见 谢*宇 自动化2402.mp4
+    codeUrl: '', // 学生作品/自动化240*谢*宇 华清远见Linux智能家居.zip
+    videoUrl: 'https://www.bilibili.com/video/BV1wqKg6nE7b/', // 智能语音音箱 华清远见 谢*宇 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
   {
     id: 'yangjiahao-smart-home',
-    title: '智能家居系统（自绘板）',
+    title: '智能家居 自制PCB板',
     students: ['杨*豪'],
     class: '自动化240*班',
     year: 2024,
     category: 'smart-home',
     tags: ['STM32', '自绘PCB', '物联网', '智能家居'],
-    description: '基于自绘PCB板实现的智能家居系统，从硬件设计到软件实现全流程自主完成。',
+    description: '基于自绘STM32 PCB板实现的智能家居系统，从硬件设计到软件实现全流程自主完成。',
     highlights: ['自绘PCB'],
-    codeUrl: '', // 学生作品/自动化2408 杨*豪 智能家居-自己画的板子.zip
-    videoUrl: '', // 智能家居-自己画的板子 杨*豪 自动化2408.mp4
+    codeUrl: '', // 学生作品/自动化240* 杨*豪 智能家居-自己画的板子.zip
+    videoUrl: 'https://www.bilibili.com/video/BV1HqKg6JEPm/', // 智能家居-自己画的板子 杨*豪 自动化240*.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -397,11 +397,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'smart-home',
-    tags: ['STM32', '传感器', '物联网'],
-    description: '基于STM32的智能家居监测系统，实现环境数据采集、分析与远程监控。',
+    tags: ['C51', '传感器', '物联网'],
+    description: '基于C51（8051单片机）的智能家居监测系统，实现环境数据采集、分析与远程监控。',
     highlights: [],
-    codeUrl: '', // 学生作品/自动化2407 郭*瑞 智能家居代码.zip
-    videoUrl: '', // 智能家居监测 自动化2407郭*瑞.mp4
+    codeUrl: '', // 学生作品/自动化240* 郭*瑞 智能家居代码.zip
+    videoUrl: 'https://www.bilibili.com/video/BV1roNq64Ee1/', // 智能家居监测 自动化240*郭*瑞.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -412,26 +412,26 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'piano',
-    tags: ['STM32', '音频', 'PWM'],
-    description: '基于STM32的多功能电子琴系统，支持琴键弹奏、自动演奏与音效切换。',
+    tags: ['C51', '音频', 'PWM'],
+    description: '基于C51（8051单片机）的多功能电子琴系统，支持琴键弹奏、自动演奏与音效切换。',
     highlights: [],
-    codeUrl: '', // 学生作品/自动化2407 罗*涛 电子琴系统.zip
-    videoUrl: '', // 多功能电子琴系统 自动化2407 罗*涛 .mp4
+    codeUrl: '',  // 代码在本地 学生作品/ 目录（不上传 GitHub），后续传独立仓库后再填链接
+    videoUrl: 'https://www.bilibili.com/video/BV1HvKg6DEUa/',
     reportUrl: '',
     thumbnail: '',
   },
   {
     id: 'litianwen-gobang',
     title: '五子棋双人系统',
-    students: ['李*文'],
+    students: ['李*文', '张*凡'],
     class: '自动化240*班',
     year: 2024,
     category: 'game',
-    tags: ['STM32', '游戏', '双人对战'],
-    description: '基于STM32的五子棋双人对战系统，实现棋盘的LCD显示、触摸落子与胜负判定。',
+    tags: ['STM32F103', '游戏', '双人对战'],
+    description: '基于双STM32F103的五子棋双人对战系统，实现棋盘的LCD显示、触摸落子与胜负判定。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '', // 五子棋双人 自动化2401 李*文.mp4
+    videoUrl: 'https://www.bilibili.com/video/BV1XjNB6CEU2/', // 五子棋双人 自动化240* 李*文.mp4
     reportUrl: '',
     thumbnail: '',
   },
@@ -443,12 +443,12 @@ const WORKS_DATA = [
     class: '自动化*240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '手写识别'],
-    description: '基于STM32与野火指南者的手写数字识别系统。',
-    highlights: [],
-    codeUrl: '学生作品/自动化T2401 吴*莹 手写数字 HandWrite-digit-recognotion-main.zip',
+    tags: ['STM32F103', '手写识别'],
+    description: '基于野火STM32指南者（STM32F103）的手写数字识别系统，支持模型量化与多模型切换，兼顾精度与速度。',
+    highlights: ['量化+多模型切换'],
+    codeUrl: '',  // 代码在本地 学生作品/ 目录（不上传 GitHub），后续传独立仓库后再填链接
     videoUrl: '',
-    reportUrl: '学生作品/自动化T2401 吴*莹-手写数字识别1.pdf',
+    reportUrl: '',  // 报告在本地 学生作品/ 目录（不上传 GitHub）
     thumbnail: '',
   },
   {
@@ -458,11 +458,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'game',
-    tags: ['STM32', '游戏', 'LCD'],
-    description: '嵌入式平台5款经典游戏合集，涵盖多种游戏类型。',
+    tags: ['STM32F103', '游戏', 'LCD'],
+    description: '基于STM32F103的5款经典游戏合集，涵盖多种游戏类型。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '',
+    videoUrl: 'https://www.bilibili.com/video/BV1ErKg62Eds/',
     reportUrl: '',
     thumbnail: '',
   },
@@ -473,11 +473,11 @@ const WORKS_DATA = [
     class: '自动化240*班',
     year: 2024,
     category: 'handwriting',
-    tags: ['STM32', '手写识别'],
-    description: '基于STM32的手写数字识别系统，实现手写数字的实时采集与神经网络识别。',
+    tags: ['STM32F407', '手写识别'],
+    description: '基于STM32F407的手写数字识别系统，实现手写数字的实时采集与神经网络识别。',
     highlights: [],
     codeUrl: '',
-    videoUrl: '',
+    videoUrl: 'https://www.bilibili.com/video/BV1HvKg6DE2d/',
     reportUrl: '',
     thumbnail: '',
   },
@@ -527,4 +527,8 @@ const TAG_COLORS = {
   '人机对战': '#673AB7',
   'ESP32': '#0047AB',
   '三平台协同': '#4CAF50',
+  'C51': '#8B4513',
+  'ARM-A53': '#FF6F00',
+  'STM32F103': '#0097A7',
+  'STM32F407': '#1565C0',
 };

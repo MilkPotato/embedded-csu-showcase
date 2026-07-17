@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- 百度统计 -->
   <script>
   var _hmt = _hmt || [];
@@ -41,7 +42,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
-      <img src="assets/中南大学校徽.png" alt="中南大学" class="csu-logo-img">
+      <img src="assets/中南大学校徽.jpg" alt="中南大学" class="csu-logo-img">
       <span>中南大学自动化学院 · <em class="nav-course-name">微控制器与嵌入式系统课程设计</em></span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -58,7 +59,7 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1>微控制器与嵌入式系统<br><span>课程设计 · 优秀作品展</span></h1>
-    <p class="hero-subtitle" id="heroSubtitle">中南大学 · 自动化 2024 级</p>
+    <p class="hero-subtitle" id="heroSubtitle">中南大学 · 自动化、测控技术与仪器等</p>
     <p class="hero-desc">这里陈列的不仅是课程设计的作品，更是一届届学子将理论与工程实践相结合的思考与探索。从智能控制到人机交互，从物联网到边缘计算，每一件作品都完整呈现了需求分析、系统设计、硬件搭建与软件调试的全过程。我们希望为后来者提供一份可查阅、可借鉴的工程实践档案，让优秀的经验得以延续，让创造的种子持续生长。</p>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -79,8 +80,8 @@
       </div>
     </div>
     <div class="hero-actions">
-      <a href="#showcase" class="btn btn-primary">浏览作品 ↓</a>
-      <a href="#overview" class="btn btn-outline-light">课程要求 ↓</a>
+      <a href="#showcase" class="btn btn-primary" onclick="document.getElementById('showcase').scrollIntoView({behavior:'smooth'});return false;">浏览作品 ↓</a>
+      <a href="#overview" class="btn btn-outline-light" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'});return false;">课程要求 ↓</a>
     </div>
   </div>
 </section>
@@ -111,7 +112,7 @@
       </div>
       <div class="info-card">
         <span class="info-icon">📅</span>
-        <h3>时间</h3>
+        <h3>时间 &amp; 地点</h3>
         <p id="courseTime">——</p>
       </div>
     </div>
@@ -161,8 +162,11 @@
     <!-- 筛选栏 -->
     <div class="filter-bar" id="filterContainer"></div>
 
+    <!-- 年份筛选 -->
+    <div class="year-tabs" id="yearTabs"></div>
+
     <!-- 作品网格 -->
-    <div class="works-grid" id="worksGrid"></div>
+    <div class="works-grid" id="worksGrid"><div class="empty-state"><div class="empty-icon">⏳</div><h3>正在加载作品列表...</h3></div></div>
 
   </div>
 </section>
@@ -217,8 +221,8 @@
   </div>
 </footer>
 
-<!-- ======================== 统计 ======================== -->
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- ======================== 统计（仅非 file:// 协议时加载） ======================== -->
+<script>if (location.protocol !== 'file:') { var bsz = document.createElement('script'); bsz.async = true; bsz.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'; document.head.appendChild(bsz); }</script>
 
 <!-- ======================== JavaScript ======================== -->
 <script src="js/config.js"></script>
@@ -234,9 +238,15 @@
   const passBtn = document.getElementById('passwordBtn');
   const passError = document.getElementById('passwordError');
 
+  function dismissGate() {
+    gate.classList.add('hidden');
+    // 彻底移除遮罩层，避免干扰页面交互（锚点跳转等）
+    setTimeout(() => { gate.style.display = 'none'; }, 500);
+  }
+
   // 检查是否已验证过
   if (sessionStorage.getItem('csu_embedded_access') === 'true') {
-    gate.classList.add('hidden');
+    dismissGate();
   }
 
   passBtn.addEventListener('click', checkPassword);
@@ -248,7 +258,7 @@
   function checkPassword() {
     if (passInput.value === ACCESS_PASSWORD) {
       sessionStorage.setItem('csu_embedded_access', 'true');
-      gate.classList.add('hidden');
+      dismissGate();
       passInput.value = '';
     } else {
       passError.classList.add('show');
@@ -284,13 +294,13 @@
 
   // 基本信息
   $('courseName').textContent = C.course.name;
-  $('courseClass').textContent = C.course.students;
+  $('courseClass').innerHTML = C.course.students.replace(' · 大二年级', '<br>大二年级');
   $('courseTeachers').textContent = C.course.teachers.join('、') + ' 等';
   $('courseTime').textContent = C.course.semester;
   $('courseGoal').textContent = C.objectives.goal;
 
-  // Hero
-  $('heroSubtitle').textContent = '中南大学 · ' + C.course.students;
+  // Hero（使用独立的 subtitle 字段，不含年级）
+  $('heroSubtitle').textContent = C.course.subtitle || '中南大学 · ' + C.course.students;
 
   // MCU 列表
   const mcuList = $('mcuList');
@@ -384,6 +394,8 @@
     'Linux': '#FF5722', 'PWM': '#3F51B5', 'RK3588': '#F44336',
     '智能锁': '#795548', '人机交互': '#607D8B', '图像显示': '#9E9E9E',
     '智能硬件': '#009688', '华清远见': '#FF9800', '人机对战': '#673AB7',
+    'C51': '#8B4513', 'ARM-A53': '#FF6F00',
+    'STM32F103': '#0097A7', 'STM32F407': '#1565C0',
   };
 
   const CATEGORY_THUMB = {
@@ -395,7 +407,10 @@
   const filterContainer = $('filterContainer');
   const worksGrid = $('worksGrid');
   let activeCategory = 'all';
+  let activeYear = 'all';
   let searchQuery = '';
+  // 提取所有年份（去重、降序）
+  const YEARS = [...new Set(WORKS_DATA.map(w => w.year))].sort((a, b) => b - a);
 
   function renderFilters() {
     let html = '';
@@ -441,6 +456,11 @@
       );
     }
 
+    // 按年份筛选
+    if (activeYear !== 'all') {
+      filtered = filtered.filter(w => w.year === activeYear);
+    }
+
     // 更新 Hero 统计
     $('statWorks').textContent = filtered.length;
 
@@ -469,36 +489,53 @@
       const hasReport = !!work.reportUrl;
       const isBilibili = hasVideo && (work.videoUrl.includes('bilibili.com') || work.videoUrl.includes('b23.tv'));
 
+      // 提取 BV 号 → 使用本地封面图
+      let coverUrl = '', bvid = '';
+      if (isBilibili) {
+        const bvMatch = work.videoUrl.match(/BV1[A-Za-z0-9]{9,10}/);
+        if (bvMatch) {
+          bvid = bvMatch[0];
+          coverUrl = `assets/covers/${bvid}.jpg`;
+        }
+      }
+
+      // 按钮：只保留 代码 + 报告，去掉"观看视频"
       let actionsHtml = '';
-      if (hasCode || hasVideo || hasReport) {
-        if (hasVideo) {
-          const btnClass = isBilibili ? 'btn btn-bilibili' : 'btn btn-primary';
-          actionsHtml += `<a href="${work.videoUrl}" class="${btnClass}" target="_blank" rel="noopener">观看视频</a>`;
-        }
-        if (hasCode) {
-          actionsHtml += `<a href="${work.codeUrl}" class="btn btn-outline" target="_blank" rel="noopener">📂 代码</a>`;
-        }
-        if (hasReport) {
-          actionsHtml += `<a href="${work.reportUrl}" class="btn btn-outline" target="_blank" rel="noopener">📄 报告</a>`;
-        }
-      } else {
+      if (hasCode) {
+        actionsHtml += `<a href="${work.codeUrl}" class="btn btn-outline" target="_blank" rel="noopener">📂 代码</a>`;
+      }
+      if (hasReport) {
+        actionsHtml += `<a href="${work.reportUrl}" class="btn btn-outline" target="_blank" rel="noopener">📄 报告</a>`;
+      }
+      if (!hasCode && !hasReport) {
         actionsHtml = `<span class="btn btn-outline btn-disabled">📁 待上传</span>`;
       }
 
       const hasThumb = !!work.thumbnail;
       const thumbIcon = CATEGORY_THUMB[work.category] || '📎';
 
-      html += `
-        <div class="work-card">
-          <div class="card-thumb ${hasThumb ? 'thumb-image' : 'thumb-' + work.category}"${hasThumb ? ` style="background-image:url('${work.thumbnail}')"` : ''}>
+      // 封面区域：有封面 → 可点击链接 + 播放按钮；无 → 保持原样
+      const thumbContent = coverUrl
+        ? `<a href="${work.videoUrl}" class="card-thumb card-thumb-link thumb-${work.category}" target="_blank" rel="noopener">
+            <img data-src="${coverUrl}" alt="${work.title}" class="thumb-img">
+            <span class="thumb-icon thumb-icon-bg">${thumbIcon}</span>
+            <div class="play-overlay"><span class="play-icon">▶</span></div>
+            <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
+            ${highlightsHtml ? `<div class="card-highlights">${highlightsHtml}</div>` : ''}
+          </a>`
+        : `<div class="card-thumb ${hasThumb ? 'thumb-image' : 'thumb-' + work.category}"${hasThumb ? ` style="background-image:url('${work.thumbnail}')"` : ''}>
             ${hasThumb ? '' : `<span class="thumb-icon">${thumbIcon}</span>`}
             <span class="card-category-badge">${CATEGORIES.find(c => c.id === work.category)?.label.replace(/^[^\s]*\s/, '') || '其他'}</span>
             ${highlightsHtml ? `<div class="card-highlights">${highlightsHtml}</div>` : ''}
-          </div>
+          </div>`;
+
+      html += `
+        <div class="work-card">
+          ${thumbContent}
           <div class="card-body">
             <div class="card-title">${work.title}</div>
             <div class="card-students">👤 ${studentsStr}</div>
-            <div class="card-class">📚 ${work.class} · ${work.year}级</div>
+            <div class="card-class">📚 ${work.class} · ${work.year}级 · 🗓️ 2026年</div>
             <div class="card-desc">${work.description}</div>
             <div class="card-tags">${tagsHtml}</div>
             <div class="card-actions">${actionsHtml}</div>
@@ -507,10 +544,43 @@
     });
 
     worksGrid.innerHTML = html;
+    // 图片逐张加载：上一张加载完才加载下一张
+    setTimeout(function() {
+      var imgs = worksGrid.querySelectorAll('img[data-src]');
+      var i = 0;
+      function loadNext() {
+        if (i >= imgs.length) return;
+        var img = imgs[i];
+        img.onload = function() { i++; setTimeout(loadNext, 50); };
+        img.onerror = function() { i++; setTimeout(loadNext, 50); };
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+      }
+      loadNext();
+    }, 50);
+  }
+
+  // ==================== 年份切换 ====================
+  function renderYearTabs() {
+    const container = document.getElementById('yearTabs');
+    let html = `<button class="year-btn${activeYear === 'all' ? ' active' : ''}" data-year="all">📅 全部年级</button>`;
+    YEARS.forEach(y => {
+      html += `<button class="year-btn${activeYear === y ? ' active' : ''}" data-year="${y}">${y} 级</button>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.year-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeYear = btn.dataset.year === 'all' ? 'all' : parseInt(btn.dataset.year);
+        renderYearTabs();
+        renderWorks();
+      });
+    });
   }
 
   renderFilters();
-  renderWorks();
+  renderYearTabs();
+  setTimeout(renderWorks, 100);
 })();
 </script>
 
